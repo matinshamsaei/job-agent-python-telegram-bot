@@ -44,3 +44,5 @@ Thumbs.db
 *.log
 logs/
 data/
+!backend/app/db/data/
+!backend/app/db/data/**
