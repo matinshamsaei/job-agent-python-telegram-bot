@@ -1,0 +1,3433 @@
+[
+  {
+    "slug": "careem",
+    "name": "Careem",
+    "country": "AE",
+    "city": "Dubai",
+    "ats_type": "greenhouse",
+    "board_token": "careem",
+    "careers_url": "https://www.careem.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/careem/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Mobility / Super App",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.careem.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "property-finder",
+    "name": "Property Finder",
+    "country": "AE",
+    "city": "Dubai",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.propertyfinder.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/propertyfinder/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "PropTech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.propertyfinder.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      },
+      {
+        "claim": "international_hiring",
+        "source_name": "verified_example_2026",
+        "source_url": null,
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page currently lists a Senior Software Engineer role in Dubai; engineering page says 100+ engineers in Dubai and mentions AWS, Go, Next.js, React Native."
+      }
+    ]
+  },
+  {
+    "slug": "tabby",
+    "name": "Tabby",
+    "country": "AE",
+    "city": "Dubai / Riyadh",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://tabby.ai/en-AE/careers",
+    "linkedin_url": "https://www.linkedin.com/company/tabbypay/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Fintech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://tabby.ai/en-AE/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      },
+      {
+        "claim": "international_hiring",
+        "source_name": "verified_example_2026",
+        "source_url": "https://tabby.ai/en-AE/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers site states offices in Riyadh, Dubai and Cairo and links to open roles."
+      }
+    ]
+  },
+  {
+    "slug": "noon",
+    "name": "Noon",
+    "country": "AE",
+    "city": "Dubai",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.noon.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/nooncom/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "E-commerce",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.noon.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "talabat",
+    "name": "Talabat",
+    "country": "AE",
+    "city": "Dubai",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://careers.talabat.com/",
+    "linkedin_url": "https://www.linkedin.com/company/talabat-com/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Delivery / Marketplace",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://careers.talabat.com/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "kitopi",
+    "name": "Kitopi",
+    "country": "AE",
+    "city": "Dubai",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.kitopi.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/kitopi/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "FoodTech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.kitopi.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "g42",
+    "name": "G42",
+    "country": "AE",
+    "city": "Abu Dhabi",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.g42.ai/careers",
+    "linkedin_url": "https://www.linkedin.com/company/g42ai/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "AI / Technology",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.g42.ai/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "presight",
+    "name": "Presight",
+    "country": "AE",
+    "city": "Abu Dhabi",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.presight.ai/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/presight-ai/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "AI / Data",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.presight.ai/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "mubadala",
+    "name": "Mubadala",
+    "country": "AE",
+    "city": "Abu Dhabi",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.mubadala.com/careers",
+    "linkedin_url": "https://www.linkedin.com/company/mubadala/",
+    "priority": 55,
+    "enabled": true,
+    "visa_status": "unknown",
+    "extra": {
+      "industry": "Investment / Technology",
+      "sponsorship_likelihood": "Medium",
+      "frontend_fit": "Possible",
+      "fullstack_fit": "Strong",
+      "stack_match": 62.0,
+      "overall_score": 60.0,
+      "priority_band": "B",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.mubadala.com/careers",
+        "type": "third_party",
+        "confidence": 0.35,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "binance",
+    "name": "Binance",
+    "country": "AE",
+    "city": "Dubai",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.binance.com/en/careers",
+    "linkedin_url": "https://www.linkedin.com/company/binance/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Crypto / Fintech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.binance.com/en/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "careem-pay",
+    "name": "Careem Pay",
+    "country": "AE",
+    "city": "Dubai",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.careem.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/careem/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Fintech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.careem.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "dubizzle-group",
+    "name": "Dubizzle Group",
+    "country": "AE",
+    "city": "Dubai",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.dubizzlegroup.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/dubizzle-group/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Marketplace",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.dubizzlegroup.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "bayut",
+    "name": "Bayut",
+    "country": "AE",
+    "city": "Dubai",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.bayut.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/bayut/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "PropTech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.bayut.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "property-finder-group",
+    "name": "Property Finder Group",
+    "country": "AE",
+    "city": "Dubai",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.propertyfinder.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/propertyfinder/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "PropTech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.propertyfinder.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "amazon-uae",
+    "name": "Amazon UAE",
+    "country": "AE",
+    "city": "Dubai",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.amazon.jobs/en/locations/dubai-uae",
+    "linkedin_url": "https://www.linkedin.com/company/amazon/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Cloud / E-commerce",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.amazon.jobs/en/locations/dubai-uae",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "microsoft-uae",
+    "name": "Microsoft UAE",
+    "country": "AE",
+    "city": "Dubai / Abu Dhabi",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://careers.microsoft.com/",
+    "linkedin_url": "https://www.linkedin.com/company/microsoft/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Cloud / Software",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://careers.microsoft.com/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "google-uae",
+    "name": "Google UAE",
+    "country": "AE",
+    "city": "Dubai",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.google.com/about/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/google/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Cloud / Software",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.google.com/about/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "uber-uae",
+    "name": "Uber UAE",
+    "country": "AE",
+    "city": "Dubai",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.uber.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/uber-com/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Mobility",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.uber.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "tamara",
+    "name": "Tamara",
+    "country": "SA",
+    "city": "Riyadh",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://tamara.co/en-sa/careers",
+    "linkedin_url": "https://www.linkedin.com/company/tamara/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Fintech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://tamara.co/en-sa/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      },
+      {
+        "claim": "international_hiring",
+        "source_name": "verified_example_2026",
+        "source_url": null,
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official Greenhouse careers currently lists engineering roles including Engineering Manager and Product Engineer II - QA in Riyadh."
+      }
+    ]
+  },
+  {
+    "slug": "salla",
+    "name": "Salla",
+    "country": "SA",
+    "city": "Jeddah / Makkah",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://jobs.salla.com/",
+    "linkedin_url": "https://www.linkedin.com/company/sallaapp/",
+    "priority": 55,
+    "enabled": true,
+    "visa_status": "unknown",
+    "extra": {
+      "industry": "E-commerce SaaS",
+      "sponsorship_likelihood": "Medium",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 68.0,
+      "overall_score": 63.0,
+      "priority_band": "B",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://jobs.salla.com/",
+        "type": "third_party",
+        "confidence": 0.35,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      },
+      {
+        "claim": "international_hiring",
+        "source_name": "verified_example_2026",
+        "source_url": "https://jobs.salla.com/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers site currently lists openings and describes the company as an e-commerce platform in Saudi Arabia."
+      }
+    ]
+  },
+  {
+    "slug": "neom",
+    "name": "NEOM",
+    "country": "SA",
+    "city": "NEOM",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://careers.neom.com/",
+    "linkedin_url": "https://www.linkedin.com/company/NEOM/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Technology / Mega Project",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://careers.neom.com/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      },
+      {
+        "claim": "international_hiring",
+        "source_name": "verified_example_2026",
+        "source_url": "https://careers.neom.com/careers?location=neom&triggerGoButton=false",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers site is live and supports CV matching; current page warns recruitment is only through official NEOM channels."
+      }
+    ]
+  },
+  {
+    "slug": "stc",
+    "name": "STC",
+    "country": "SA",
+    "city": "Riyadh",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.stc.com.sa/content/stcgroupwebsite/sa/en/careers.html",
+    "linkedin_url": "https://www.linkedin.com/company/stc/",
+    "priority": 55,
+    "enabled": true,
+    "visa_status": "unknown",
+    "extra": {
+      "industry": "Telecom / Technology",
+      "sponsorship_likelihood": "Medium",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 68.0,
+      "overall_score": 63.0,
+      "priority_band": "B",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.stc.com.sa/content/stcgroupwebsite/sa/en/careers.html",
+        "type": "third_party",
+        "confidence": 0.35,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "solutions-by-stc",
+    "name": "Solutions by stc",
+    "country": "SA",
+    "city": "Riyadh",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://solutions.com.sa/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/solutions-by-stc/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "IT Services",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://solutions.com.sa/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "elm",
+    "name": "Elm",
+    "country": "SA",
+    "city": "Riyadh",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.elm.sa/en/careers/Pages/default.aspx",
+    "linkedin_url": "https://www.linkedin.com/company/elm/",
+    "priority": 55,
+    "enabled": true,
+    "visa_status": "unknown",
+    "extra": {
+      "industry": "Digital Services",
+      "sponsorship_likelihood": "Medium",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 68.0,
+      "overall_score": 63.0,
+      "priority_band": "B",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.elm.sa/en/careers/Pages/default.aspx",
+        "type": "third_party",
+        "confidence": 0.35,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "aramco",
+    "name": "Aramco",
+    "country": "SA",
+    "city": "Dhahran",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.aramco.com/en/careers",
+    "linkedin_url": "https://www.linkedin.com/company/aramco/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Energy / Technology",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Possible",
+      "fullstack_fit": "Strong",
+      "stack_match": 82.0,
+      "overall_score": 80.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.aramco.com/en/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "pif",
+    "name": "PIF",
+    "country": "SA",
+    "city": "Riyadh",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.pif.gov.sa/en/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/public-investment-fund/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Investment / Technology",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Possible",
+      "fullstack_fit": "Strong",
+      "stack_match": 82.0,
+      "overall_score": 80.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.pif.gov.sa/en/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "lean-technologies",
+    "name": "Lean Technologies",
+    "country": "SA",
+    "city": "Riyadh",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://leantech.me/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/lean-technologies/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Fintech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://leantech.me/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "jahez",
+    "name": "Jahez",
+    "country": "SA",
+    "city": "Riyadh",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://jahez.net/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/jahez/",
+    "priority": 55,
+    "enabled": true,
+    "visa_status": "unknown",
+    "extra": {
+      "industry": "Delivery / Marketplace",
+      "sponsorship_likelihood": "Medium",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 68.0,
+      "overall_score": 63.0,
+      "priority_band": "B",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://jahez.net/careers/",
+        "type": "third_party",
+        "confidence": 0.35,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "hungerstation",
+    "name": "HungerStation",
+    "country": "SA",
+    "city": "Riyadh",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://hungerstation.com/sa-en/careers",
+    "linkedin_url": "https://www.linkedin.com/company/hungerstation/",
+    "priority": 55,
+    "enabled": true,
+    "visa_status": "unknown",
+    "extra": {
+      "industry": "Delivery",
+      "sponsorship_likelihood": "Medium",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 68.0,
+      "overall_score": 63.0,
+      "priority_band": "B",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://hungerstation.com/sa-en/careers",
+        "type": "third_party",
+        "confidence": 0.35,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "careem-saudi",
+    "name": "Careem Saudi",
+    "country": "SA",
+    "city": "Riyadh",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.careem.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/careem/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Mobility / Super App",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.careem.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "booking",
+    "name": "Booking.com",
+    "country": "NL",
+    "city": "Amsterdam",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://careers.booking.com/",
+    "linkedin_url": "https://www.linkedin.com/company/booking-com/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "TravelTech",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://careers.booking.com/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://careers.booking.com/",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "adyen",
+    "name": "Adyen",
+    "country": "NL",
+    "city": "Amsterdam",
+    "ats_type": "greenhouse",
+    "board_token": "adyen",
+    "careers_url": "https://careers.adyen.com/",
+    "linkedin_url": "https://www.linkedin.com/company/adyen/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Fintech",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://careers.adyen.com/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://careers.adyen.com/",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "uber-netherlands",
+    "name": "Uber Netherlands",
+    "country": "NL",
+    "city": "Amsterdam",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.uber.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/uber-com/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Mobility",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.uber.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://www.uber.com/careers/",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "asml",
+    "name": "ASML",
+    "country": "NL",
+    "city": "Veldhoven",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.asml.com/en/careers",
+    "linkedin_url": "https://www.linkedin.com/company/asml/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Semiconductor / Technology",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.asml.com/en/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://www.asml.com/en/careers",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "elastic",
+    "name": "Elastic",
+    "country": "NL",
+    "city": "Amsterdam",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.elastic.co/about/careers",
+    "linkedin_url": "https://www.linkedin.com/company/elastic-co/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Developer Tools / SaaS",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.elastic.co/about/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://www.elastic.co/about/careers",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "databricks",
+    "name": "Databricks",
+    "country": "NL",
+    "city": "Amsterdam",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.databricks.com/company/careers",
+    "linkedin_url": "https://www.linkedin.com/company/databricks/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Data / AI",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.databricks.com/company/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://www.databricks.com/company/careers",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "miro",
+    "name": "Miro",
+    "country": "NL",
+    "city": "Amsterdam",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://miro.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/miro/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "SaaS / Collaboration",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://miro.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://miro.com/careers/",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "google-netherlands",
+    "name": "Google Netherlands",
+    "country": "NL",
+    "city": "Amsterdam",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.google.com/about/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/google/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Cloud / Software",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.google.com/about/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://www.google.com/about/careers/",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "stripe-netherlands",
+    "name": "Stripe Netherlands",
+    "country": "NL",
+    "city": "Amsterdam",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://stripe.com/jobs",
+    "linkedin_url": "https://www.linkedin.com/company/stripe/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Fintech",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://stripe.com/jobs",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://stripe.com/jobs",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "atlassian-netherlands",
+    "name": "Atlassian Netherlands",
+    "country": "NL",
+    "city": "Amsterdam",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.atlassian.com/company/careers",
+    "linkedin_url": "https://www.linkedin.com/company/atlassian/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "SaaS",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.atlassian.com/company/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://www.atlassian.com/company/careers",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "tomtom",
+    "name": "TomTom",
+    "country": "NL",
+    "city": "Amsterdam",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.tomtom.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/tomtom/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Maps / Technology",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.tomtom.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://www.tomtom.com/careers/",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "optiver",
+    "name": "Optiver",
+    "country": "NL",
+    "city": "Amsterdam",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://optiver.com/working-at-optiver/career-opportunities/",
+    "linkedin_url": "https://www.linkedin.com/company/optiver/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Trading / Technology",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://optiver.com/working-at-optiver/career-opportunities/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://optiver.com/working-at-optiver/career-opportunities/",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "imc-trading",
+    "name": "IMC Trading",
+    "country": "NL",
+    "city": "Amsterdam",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.imc.com/eu/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/imc-trading/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Trading / Technology",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.imc.com/eu/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://www.imc.com/eu/careers/",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "ing",
+    "name": "ING",
+    "country": "NL",
+    "city": "Amsterdam",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.ing.jobs/",
+    "linkedin_url": "https://www.linkedin.com/company/ing/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Banking / Technology",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.ing.jobs/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://www.ing.jobs/",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "rabobank",
+    "name": "Rabobank",
+    "country": "NL",
+    "city": "Utrecht",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://rabobank.jobs/",
+    "linkedin_url": "https://www.linkedin.com/company/rabobank/",
+    "priority": 100,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Banking / Technology",
+      "sponsorship_likelihood": "Verified/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 97.0,
+      "overall_score": 92.0,
+      "priority_band": "S",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://rabobank.jobs/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://rabobank.jobs/",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "prosus",
+    "name": "Prosus",
+    "country": "NL",
+    "city": "Amsterdam",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.prosus.com/careers",
+    "linkedin_url": "https://www.linkedin.com/company/prosus/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Technology / Investment",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "Verified sponsor"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.prosus.com/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers + government register check recommended"
+      },
+      {
+        "claim": "recognized_sponsor",
+        "source_name": "IND recognised sponsor list (as recorded 2026 dataset)",
+        "source_url": "https://www.prosus.com/careers",
+        "type": "government",
+        "confidence": 0.8,
+        "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ]
+  },
+  {
+    "slug": "sap",
+    "name": "SAP",
+    "country": "DE",
+    "city": "Walldorf / Berlin",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.sap.com/about/careers.html",
+    "linkedin_url": "https://www.linkedin.com/company/sap/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Enterprise Software",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.sap.com/about/careers.html",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "zalando",
+    "name": "Zalando",
+    "country": "DE",
+    "city": "Berlin",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://jobs.zalando.com/",
+    "linkedin_url": "https://www.linkedin.com/company/zalando/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "E-commerce / Technology",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://jobs.zalando.com/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      },
+      {
+        "claim": "international_hiring",
+        "source_name": "verified_example_2026",
+        "source_url": "https://jobs.zalando.com/en/jobs/2723609-Fullstack-Software-Engineer-%28Kotlin%2FTypescript%2FRea",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers currently lists Fullstack Software Engineer roles in Berlin using Kotlin/TypeScript/React and a broad software-engineering job catalog."
+      }
+    ]
+  },
+  {
+    "slug": "delivery-hero",
+    "name": "Delivery Hero",
+    "country": "DE",
+    "city": "Berlin",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://careers.deliveryhero.com/",
+    "linkedin_url": "https://www.linkedin.com/company/delivery-hero/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Delivery / Technology",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://careers.deliveryhero.com/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "n26",
+    "name": "N26",
+    "country": "DE",
+    "city": "Berlin",
+    "ats_type": "greenhouse",
+    "board_token": "n26",
+    "careers_url": "https://n26.com/en-eu/careers",
+    "linkedin_url": "https://www.linkedin.com/company/n26/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Fintech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://n26.com/en-eu/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "celonis",
+    "name": "Celonis",
+    "country": "DE",
+    "city": "Munich",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.celonis.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/celonis/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Process Mining / SaaS",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.celonis.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "personio",
+    "name": "Personio",
+    "country": "DE",
+    "city": "Munich",
+    "ats_type": "personio_xml",
+    "board_token": "personio",
+    "careers_url": "https://www.personio.com/about-personio/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/personio/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "HRTech / SaaS",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.personio.com/about-personio/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "wayfair-germany",
+    "name": "Wayfair Germany",
+    "country": "DE",
+    "city": "Berlin",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.wayfair.com/careers",
+    "linkedin_url": "https://www.linkedin.com/company/wayfair/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "E-commerce / Technology",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.wayfair.com/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "hubspot-germany",
+    "name": "HubSpot Germany",
+    "country": "DE",
+    "city": "Berlin",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.hubspot.com/careers",
+    "linkedin_url": "https://www.linkedin.com/company/hubspot/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "SaaS",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.hubspot.com/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "amazon-germany",
+    "name": "Amazon Germany",
+    "country": "DE",
+    "city": "Berlin / Munich",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.amazon.jobs/en/locations/germany",
+    "linkedin_url": "https://www.linkedin.com/company/amazon/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Cloud / E-commerce",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.amazon.jobs/en/locations/germany",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "aws-germany",
+    "name": "AWS Germany",
+    "country": "DE",
+    "city": "Berlin / Munich",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.amazon.jobs/en/teams/amazon-web-services",
+    "linkedin_url": "https://www.linkedin.com/company/amazon-web-services/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Cloud",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.amazon.jobs/en/teams/amazon-web-services",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "google-germany",
+    "name": "Google Germany",
+    "country": "DE",
+    "city": "Berlin / Munich",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.google.com/about/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/google/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Cloud / Software",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.google.com/about/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "microsoft-germany",
+    "name": "Microsoft Germany",
+    "country": "DE",
+    "city": "Munich / Berlin",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://careers.microsoft.com/",
+    "linkedin_url": "https://www.linkedin.com/company/microsoft/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Cloud / Software",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://careers.microsoft.com/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "meta-germany",
+    "name": "Meta Germany",
+    "country": "DE",
+    "city": "Berlin",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.metacareers.com/",
+    "linkedin_url": "https://www.linkedin.com/company/meta/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Software / Social",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.metacareers.com/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "siemens",
+    "name": "Siemens",
+    "country": "DE",
+    "city": "Munich",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.siemens.com/global/en/company/jobs.html",
+    "linkedin_url": "https://www.linkedin.com/company/siemens/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Industrial Technology",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.siemens.com/global/en/company/jobs.html",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "bosch",
+    "name": "Bosch",
+    "country": "DE",
+    "city": "Stuttgart / Munich",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.bosch.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/bosch/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Technology / Engineering",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.bosch.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "spotify",
+    "name": "Spotify",
+    "country": "SE",
+    "city": "Stockholm",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.lifeatspotify.com/jobs",
+    "linkedin_url": "https://www.linkedin.com/company/spotify/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Audio / Technology",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.lifeatspotify.com/jobs",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "klarna",
+    "name": "Klarna",
+    "country": "SE",
+    "city": "Stockholm",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.klarna.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/klarna/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Fintech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.klarna.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "king",
+    "name": "King",
+    "country": "SE",
+    "city": "Stockholm",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.king.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/king/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Gaming",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.king.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "ericsson",
+    "name": "Ericsson",
+    "country": "SE",
+    "city": "Stockholm",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.ericsson.com/en/careers",
+    "linkedin_url": "https://www.linkedin.com/company/ericsson/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Telecom / Technology",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.ericsson.com/en/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "volvo-cars",
+    "name": "Volvo Cars",
+    "country": "SE",
+    "city": "Gothenburg",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.volvocars.com/intl/v/careers",
+    "linkedin_url": "https://www.linkedin.com/company/volvo-cars/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "unknown",
+    "extra": {
+      "industry": "Automotive / Software",
+      "sponsorship_likelihood": "Medium/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 78.0,
+      "overall_score": 73.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.volvocars.com/intl/v/careers",
+        "type": "third_party",
+        "confidence": 0.35,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "sinch",
+    "name": "Sinch",
+    "country": "SE",
+    "city": "Stockholm",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.sinch.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/sinch/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Communications SaaS",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.sinch.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "truecaller",
+    "name": "Truecaller",
+    "country": "SE",
+    "city": "Stockholm",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.truecaller.com/careers",
+    "linkedin_url": "https://www.linkedin.com/company/truecaller/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Consumer Software",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.truecaller.com/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "tink",
+    "name": "Tink",
+    "country": "SE",
+    "city": "Stockholm",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://tink.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/tink/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Fintech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://tink.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "google-ireland",
+    "name": "Google Ireland",
+    "country": "IE",
+    "city": "Dublin",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.google.com/about/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/google/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Cloud / Software",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.google.com/about/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "meta-ireland",
+    "name": "Meta Ireland",
+    "country": "IE",
+    "city": "Dublin",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.metacareers.com/",
+    "linkedin_url": "https://www.linkedin.com/company/meta/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Software / Social",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.metacareers.com/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "microsoft-ireland",
+    "name": "Microsoft Ireland",
+    "country": "IE",
+    "city": "Dublin",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://careers.microsoft.com/",
+    "linkedin_url": "https://www.linkedin.com/company/microsoft/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Cloud / Software",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://careers.microsoft.com/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "amazon-ireland",
+    "name": "Amazon Ireland",
+    "country": "IE",
+    "city": "Dublin",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.amazon.jobs/en/locations/dublin-area-ireland",
+    "linkedin_url": "https://www.linkedin.com/company/amazon/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Cloud / E-commerce",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.amazon.jobs/en/locations/dublin-area-ireland",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "stripe-ireland",
+    "name": "Stripe Ireland",
+    "country": "IE",
+    "city": "Dublin",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://stripe.com/jobs",
+    "linkedin_url": "https://www.linkedin.com/company/stripe/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Fintech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://stripe.com/jobs",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "hubspot",
+    "name": "HubSpot Ireland",
+    "country": "IE",
+    "city": "Dublin",
+    "ats_type": "greenhouse",
+    "board_token": "hubspotjobs",
+    "careers_url": "https://www.hubspot.com/careers",
+    "linkedin_url": "https://www.linkedin.com/company/hubspot/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "SaaS",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.hubspot.com/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "workday-ireland",
+    "name": "Workday Ireland",
+    "country": "IE",
+    "city": "Dublin",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.workday.com/en-us/company/careers.html",
+    "linkedin_url": "https://www.linkedin.com/company/workday/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Enterprise SaaS",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.workday.com/en-us/company/careers.html",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "intercom",
+    "name": "Intercom",
+    "country": "IE",
+    "city": "Dublin",
+    "ats_type": "greenhouse",
+    "board_token": "intercom",
+    "careers_url": "https://www.intercom.com/careers",
+    "linkedin_url": "https://www.linkedin.com/company/intercom/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "SaaS",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.intercom.com/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "unity",
+    "name": "Unity",
+    "country": "DK",
+    "city": "Copenhagen",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://unity.com/careers",
+    "linkedin_url": "https://www.linkedin.com/company/unity/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Game / Technology",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://unity.com/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "pleo",
+    "name": "Pleo",
+    "country": "DK",
+    "city": "Copenhagen",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.pleo.io/en/careers",
+    "linkedin_url": "https://www.linkedin.com/company/pleo/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Fintech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.pleo.io/en/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "trustpilot",
+    "name": "Trustpilot",
+    "country": "DK",
+    "city": "Copenhagen",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://corporate.trustpilot.com/careers",
+    "linkedin_url": "https://www.linkedin.com/company/trustpilot/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "SaaS",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://corporate.trustpilot.com/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "too-good-to-go",
+    "name": "Too Good To Go",
+    "country": "DK",
+    "city": "Copenhagen",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.toogoodtogo.com/en/careers",
+    "linkedin_url": "https://www.linkedin.com/company/too-good-to-go/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Marketplace / Sustainability",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.toogoodtogo.com/en/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "maersk",
+    "name": "Maersk",
+    "country": "DK",
+    "city": "Copenhagen",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.maersk.com/careers",
+    "linkedin_url": "https://www.linkedin.com/company/maersk/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Logistics / Technology",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.maersk.com/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "sitecore",
+    "name": "Sitecore",
+    "country": "DK",
+    "city": "Copenhagen",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.sitecore.com/company/careers",
+    "linkedin_url": "https://www.linkedin.com/company/sitecore/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "SaaS",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.sitecore.com/company/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "wolt",
+    "name": "Wolt",
+    "country": "FI",
+    "city": "Helsinki",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://careers.wolt.com/",
+    "linkedin_url": "https://www.linkedin.com/company/wolt/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Marketplace / Delivery",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://careers.wolt.com/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "supercell",
+    "name": "Supercell",
+    "country": "FI",
+    "city": "Helsinki",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://supercell.com/en/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/supercell/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Gaming",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://supercell.com/en/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "nokia",
+    "name": "Nokia",
+    "country": "FI",
+    "city": "Espoo",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.nokia.com/about-us/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/nokia/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Telecom / Technology",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.nokia.com/about-us/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "relex-solutions",
+    "name": "RELEX Solutions",
+    "country": "FI",
+    "city": "Helsinki",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.relexsolutions.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/relex-solutions/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "SaaS / Retail Tech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.relexsolutions.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "aiven",
+    "name": "Aiven",
+    "country": "FI",
+    "city": "Helsinki",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://aiven.io/careers",
+    "linkedin_url": "https://www.linkedin.com/company/aiven/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Cloud / Data",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://aiven.io/careers",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "oda",
+    "name": "Oda",
+    "country": "NO",
+    "city": "Oslo",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://oda.com/no/about/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/oda/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "unknown",
+    "extra": {
+      "industry": "E-commerce",
+      "sponsorship_likelihood": "Medium/High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 78.0,
+      "overall_score": 73.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://oda.com/no/about/careers/",
+        "type": "third_party",
+        "confidence": 0.35,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "telenor",
+    "name": "Telenor",
+    "country": "NO",
+    "city": "Fornebu / Oslo",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.telenor.com/career/",
+    "linkedin_url": "https://www.linkedin.com/company/telenor/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Telecom / Technology",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.telenor.com/career/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "schibsted",
+    "name": "Schibsted",
+    "country": "NO",
+    "city": "Oslo",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://schibsted.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/schibsted/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "Media / Technology",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://schibsted.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "kahoot",
+    "name": "Kahoot!",
+    "country": "NO",
+    "city": "Oslo",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://kahoot.com/careers/",
+    "linkedin_url": "https://www.linkedin.com/company/kahoot/",
+    "priority": 80,
+    "enabled": true,
+    "visa_status": "likely",
+    "extra": {
+      "industry": "EdTech",
+      "sponsorship_likelihood": "High",
+      "frontend_fit": "Strong",
+      "fullstack_fit": "Strong",
+      "stack_match": 88.0,
+      "overall_score": 83.0,
+      "priority_band": "A",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://kahoot.com/careers/",
+        "type": "third_party",
+        "confidence": 0.55,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  },
+  {
+    "slug": "dnb",
+    "name": "DNB",
+    "country": "NO",
+    "city": "Oslo",
+    "ats_type": "career_page",
+    "board_token": null,
+    "careers_url": "https://www.dnb.no/om-oss/jobb-og-karriere",
+    "linkedin_url": "https://www.linkedin.com/company/dnb/",
+    "priority": 55,
+    "enabled": true,
+    "visa_status": "unknown",
+    "extra": {
+      "industry": "Banking / Technology",
+      "sponsorship_likelihood": "Medium/High",
+      "frontend_fit": "Possible",
+      "fullstack_fit": "Strong",
+      "stack_match": 72.0,
+      "overall_score": 70.0,
+      "priority_band": "B",
+      "last_verified": "2026-08-23",
+      "notes": "Initial research dataset; verify role-level sponsorship before applying.",
+      "ind_recognised_sponsor": "N/A"
+    },
+    "evidence": [
+      {
+        "claim": "international_hiring",
+        "source_name": "europe_mena_target_companies_2026",
+        "source_url": "https://www.dnb.no/om-oss/jobb-og-karriere",
+        "type": "third_party",
+        "confidence": 0.35,
+        "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ]
+  }
+]
