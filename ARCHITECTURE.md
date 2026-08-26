@@ -6,7 +6,7 @@ This is a **single-user modular monolith**. It discovers software engineering jo
 
 ## Current repository state
 
-Greenfield. Phase 1 is the runnable foundation (API, settings, PostgreSQL, Redis, Alembic, structured logging, health checks, Docker Compose). Domain models and collectors start in later phases.
+Greenfield through one-shot discovery: models, collectors (Greenhouse/Lever/Personio XML), scoring, Telegram notifications, and `python -m app.jobs run-once`. Dashboard, Dramatiq, and learning are still later phases.
 
 ## Success metrics
 

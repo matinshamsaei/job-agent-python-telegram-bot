@@ -16,7 +16,7 @@ A modular monolith that:
 6. Tracks applications and outcomes
 7. Learns from decisions to improve future ranking
 
-Phase 1 is the foundation only: FastAPI, PostgreSQL, Redis, Alembic, settings, structured logging, health checks, Docker Compose.
+Phase 1 is the foundation. Discovery, scoring, and Telegram notifications are available via the one-shot runner.
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) for design, tradeoffs, risks, and the phase plan.
 
@@ -25,7 +25,8 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for design, tradeoffs, risks, and the pha
 - Python 3.13+
 - [uv](https://docs.astral.sh/uv/)
 - Docker + Docker Compose
-- (later phases) OpenAI API key, Telegram bot token
+- OpenAI API key
+- Telegram bot token and chat id
 
 Install uv on Windows:
 
@@ -44,6 +45,7 @@ docker compose up -d postgres redis
 cd backend
 uv sync
 uv run alembic upgrade head
+uv run python -m app.jobs run-once --limit 10
 uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
@@ -65,7 +67,7 @@ The API container overrides `DATABASE_URL` and `REDIS_URL` so they point at the 
 
 ## Database
 
-Alembic lives in `backend/`. There are no domain tables in Phase 1; `upgrade head` applies the baseline revision so the migration toolchain is verified.
+Alembic lives in `backend/`. Domain tables (jobs, companies, scores, notifications) are created by migrations after the baseline revision.
 
 ```powershell
 cd backend
@@ -79,6 +81,15 @@ PostgreSQL connection (local Compose defaults). Host port `5434` avoids clashing
 ```
 postgresql+asyncpg://jobagent:jobagent@localhost:5434/jobagent
 ```
+
+Target companies are upserted from `backend/app/db/data/target_companies.json` (Europe/MENA 2026 research list). Re-seed after changing that file, or on the next `run-once` (seed always upserts):
+
+```powershell
+cd backend
+uv run python -m app.db.seed
+```
+
+Workbook changes can be converted again with `scripts/import_target_companies.py`. Sponsorship from that workbook is stored as `likely` / `unknown`, never `confirmed`. Nordic countries (SE, DK, FI, NO) are included in the candidate target list so those jobs are not location-filtered out.
 
 ## Redis
 
@@ -98,16 +109,39 @@ Copy `.env.example` to `.env`. Never commit `.env`.
 |---|---|
 | `DATABASE_URL` | SQLAlchemy async PostgreSQL URL |
 | `REDIS_URL` | Redis URL |
-| `OPENAI_API_KEY` | Reserved; unused in Phase 1 |
-| `TELEGRAM_BOT_TOKEN` | Reserved; unused in Phase 1 |
-| `TELEGRAM_CHAT_ID` | Reserved; unused in Phase 1 |
+| `OPENAI_API_KEY` | Job analysis and on-demand cover letters |
+| `OPENAI_MODEL` | OpenAI model, default `gpt-4o-mini` |
+| `TELEGRAM_BOT_TOKEN` | Telegram bot token |
+| `TELEGRAM_CHAT_ID` | Destination chat for job alerts |
+| `SCORE_NOTIFY_THRESHOLD` | Minimum score for Telegram (default 80) |
 | `APP_ENV` | `development` / `production` |
 | `LOG_LEVEL` | `DEBUG`, `INFO`, `WARNING`, `ERROR` |
 | `LOG_JSON` | `true` for JSON logs |
 
+## One-shot discovery (no scheduler)
+
+Runs the real pipeline once against PostgreSQL, OpenAI, and Telegram, then exits. It never submits applications and never generates cover letters unless you click the Telegram button later.
+
+```powershell
+cd f:\Programming\job-agent\backend
+uv run python -m app.jobs run-once --limit 10
+```
+
+Equivalent:
+
+```powershell
+uv run python -m app.jobs.run_once --limit 10
+```
+
+To handle APPLY / SKIP / REJECT / GENERATE COVER LETTER buttons:
+
+```powershell
+uv run python -m app.notifications.bot
+```
+
 ## Workers and scheduler
 
-Not started in Phase 1. Dramatiq workers and APScheduler jobs arrive with job discovery (Phase 3).
+The one-shot command above is the local end-to-end path. Dramatiq/APScheduler are not required to discover and notify.
 
 ## Frontend
 
