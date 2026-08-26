@@ -14,7 +14,7 @@ def test_log_level_is_normalized() -> None:
 
 
 def test_reserved_secrets_default_empty() -> None:
-    settings = Settings()
+    settings = Settings(openai_api_key="", telegram_bot_token="", telegram_chat_id="")
     assert settings.openai_api_key == ""
     assert settings.telegram_bot_token == ""
     assert settings.telegram_chat_id == ""

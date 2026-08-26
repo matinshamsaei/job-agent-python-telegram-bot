@@ -31,8 +31,15 @@ class Settings(BaseSettings):
     redis_url: RedisDsn = Field(default="redis://localhost:6380/0")
 
     openai_api_key: str = ""
+    openai_model: str = "gpt-4o-mini"
     telegram_bot_token: str = ""
     telegram_chat_id: str = ""
+    score_notify_threshold: int = 80
+    score_apply_threshold: int = 80
+    score_review_threshold: int = 60
+    evidence_half_life_days: int = 180
+    http_timeout_seconds: float = 20.0
+    collector_pause_seconds: float = 0.35
 
     @field_validator("log_level")
     @classmethod
