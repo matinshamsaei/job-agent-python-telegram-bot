@@ -14,7 +14,7 @@ engine: AsyncEngine | None = None
 SessionLocal: async_sessionmaker[AsyncSession] | None = None
 
 
-def init_engine(settings: Settings) -> AsyncEngine:
+def init_engine(settings: Settings) -> async_sessionmaker[AsyncSession]:
     global engine, SessionLocal
     engine = create_async_engine(
         settings.database_url_str,
@@ -27,7 +27,7 @@ def init_engine(settings: Settings) -> AsyncEngine:
         class_=AsyncSession,
         expire_on_commit=False,
     )
-    return engine
+    return SessionLocal
 
 
 async def dispose_engine() -> None:
