@@ -12,15 +12,23 @@ from app.analyzers.job_analysis import analyze_deterministically, merge_llm
 from app.analyzers.normalize import normalized_job_fields
 from app.analyzers.skills import match_skills
 from app.analyzers.visa import combine_visa_status, decayed_confidence
-from app.collectors.registry import collector_for
+from app.collectors.base import CollectorTarget, target_from
+from app.collectors.registry import build_collector
+from app.collectors.runner import collect_source, enrich_job
 from app.core.config import Settings
-from app.core.enums import EvidenceClaim, EvidenceType, NotificationStatus
+from app.core.enums import (
+    CollectionStatus,
+    EvidenceClaim,
+    EvidenceType,
+    NotificationStatus,
+)
 from app.core.logging import configure_logging
 from app.db.seed import seed_if_needed
 from app.db.session import dispose_engine, init_engine
 from app.models import (
     CandidateProfile,
     CompanyEvidence,
+    CompanyJobSource,
     Job,
     JobAnalysis,
     JobScore,
@@ -47,11 +55,22 @@ class PipelineSummary:
     telegram_notifications: int = 0
     errors: int = 0
     highest_score: float = 0.0
+    sources_attempted: int = 0
+    jobs_seen: int = 0
     notified_by_company: dict[str, int] = field(default_factory=dict)
     error_details: list[str] = field(default_factory=list)
+    status_counts: dict[str, int] = field(default_factory=dict)
+    missing_adapters: dict[str, int] = field(default_factory=dict)
+
+    def record_status(self, status: CollectionStatus, ats_type: str) -> None:
+        self.status_counts[status.value] = self.status_counts.get(status.value, 0) + 1
+        if status is CollectionStatus.ADAPTER_MISSING:
+            self.missing_adapters[ats_type] = self.missing_adapters.get(ats_type, 0) + 1
 
     def print(self) -> None:
         print(
+            f"Sources attempted: {self.sources_attempted}\n"
+            f"Jobs seen on feeds: {self.jobs_seen}\n"
             f"Discovered: {self.discovered}\n"
             f"New: {self.new}\n"
             f"Duplicates: {self.duplicates}\n"
@@ -62,6 +81,14 @@ class PipelineSummary:
             f"Telegram notifications: {self.telegram_notifications}\n"
             f"Errors: {self.errors}"
         )
+        if self.status_counts:
+            print("\nSource status:")
+            for status, count in sorted(self.status_counts.items(), key=lambda kv: -kv[1]):
+                print(f"  {status:20} {count}")
+        if self.missing_adapters:
+            print("\nMissing adapters (engineering effort ranked by company count):")
+            for ats_type, count in sorted(self.missing_adapters.items(), key=lambda kv: -kv[1]):
+                print(f"  {ats_type:20} {count}")
 
 
 async def run_pipeline(limit: int = 10) -> PipelineSummary:
@@ -97,11 +124,12 @@ async def _execute(
     if profile is None:
         raise RuntimeError("Candidate profile is missing. Seed the database first.")
 
-    companies = (
-        await session.scalars(
-            select(TargetCompany)
-            .where(TargetCompany.enabled.is_(True))
-            .order_by(TargetCompany.priority.desc())
+    pairs = (
+        await session.execute(
+            select(TargetCompany, CompanyJobSource)
+            .join(CompanyJobSource, CompanyJobSource.company_id == TargetCompany.id)
+            .where(TargetCompany.enabled.is_(True), CompanyJobSource.enabled.is_(True))
+            .order_by(TargetCompany.priority.desc(), CompanyJobSource.priority.desc())
         )
     ).all()
 
@@ -114,32 +142,34 @@ async def _execute(
     ai = OpenAIProvider(settings)
 
     async with httpx.AsyncClient(headers=headers, timeout=timeout, follow_redirects=True) as client:
-        buckets: list[list[tuple[TargetCompany, object]]] = []
-        for company in companies:
-            collector = collector_for(company, client, settings)
-            try:
-                raw_jobs = await collector.collect(company)
-            except Exception as exc:
-                _record_error(summary, run, f"{company.slug} collect: {exc}")
-                continue
-            engineering = [
-                (company, raw)
-                for raw in raw_jobs
+        buckets: list[list[tuple[TargetCompany, CollectorTarget, object]]] = []
+        for company, source in pairs:
+            target = target_from(company, source)
+            summary.sources_attempted += 1
+            outcome = await collect_source(target, client, settings)
+            summary.record_status(outcome.status, target.ats_type)
+            summary.jobs_seen += len(outcome.jobs)
+            _apply_outcome(source, outcome)
+
+            matching = [
+                (company, target, raw)
+                for raw in outcome.jobs
                 if looks_like_target_role(raw.title)
             ]
-            engineering.sort(key=lambda item: target_role_rank(item[1].title))
-            if engineering:
-                buckets.append(engineering)
-            await _pause(settings)
+            matching.sort(key=lambda item: target_role_rank(item[2].title))
+            if matching:
+                buckets.append(matching)
+            if outcome.status is not CollectionStatus.ADAPTER_MISSING:
+                await _pause(settings)
 
         selected = select_round_robin(buckets, limit)
         summary.discovered = len(selected)
 
-        for company, raw in selected:
-            collector = collector_for(company, client, settings)
+        for company, target, raw in selected:
+            collector = build_collector(target.ats_type, client, settings)
             try:
-                if not raw.description:
-                    raw = await collector.enrich(company, raw)
+                if not raw.description and collector is not None:
+                    raw = await enrich_job(collector, target, raw)
                     await _pause(settings)
                 await _process_job(
                     session,
@@ -170,8 +200,28 @@ async def _execute(
         "highest_score": summary.highest_score,
         "telegram_notifications": summary.telegram_notifications,
         "errors": summary.errors,
+        "sources_attempted": summary.sources_attempted,
+        "jobs_seen": summary.jobs_seen,
+        "source_status": summary.status_counts,
+        "missing_adapters": summary.missing_adapters,
     }
     await session.commit()
+
+
+def _apply_outcome(source: CompanyJobSource, outcome) -> None:
+    """Persist the collection status so a source explains its own last run."""
+    now = datetime.now(UTC)
+    source.status = outcome.status.value
+    source.status_detail = outcome.detail
+    source.last_attempted_at = now
+    if outcome.ok:
+        source.last_job_count = len(outcome.jobs)
+        source.consecutive_failures = 0
+        if outcome.jobs:
+            source.last_collected_at = now
+            source.last_verified_at = now
+    else:
+        source.consecutive_failures += 1
 
 
 async def _process_job(

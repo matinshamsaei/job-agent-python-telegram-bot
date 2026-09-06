@@ -6,7 +6,7 @@ This is a **single-user modular monolith**. It discovers software engineering jo
 
 ## Current repository state
 
-Greenfield through one-shot discovery: models, collectors (Greenhouse/Lever/Personio XML), scoring, Telegram notifications, and `python -m app.jobs run-once`. Dashboard, Dramatiq, and learning are still later phases.
+Greenfield through one-shot discovery: models, a multi-adapter collector registry (Greenhouse, Lever, Personio, Ashby, SmartRecruiters, Workable, Recruitee, Teamtailor, Workday), scoring, Telegram notifications, and `python -m app.jobs run-once`. Dashboard, Dramatiq, and learning are still later phases.
 
 ## Success metrics
 
@@ -48,7 +48,7 @@ Planned package layout (`backend/app/`):
 | `core/` | settings, logging | 1 |
 | `db/` | engine, sessions, Redis client | 1 |
 | `models/` / `schemas/` / `repositories/` | persistence and API contracts | 2 |
-| `collectors/` | Greenhouse, Lever, career pages | 3 |
+| `collectors/` | adapter registry, ATS resolver, ATS detection | 3 |
 | `analyzers/` | deterministic extract + LLM analysis | 4 |
 | `scoring/` | pure scoring engine | 5 |
 | `notifications/` | Telegram bot | 7 |
@@ -84,9 +84,58 @@ Dedup:
 
 Preference order: official API → ATS JSON → RSS/feed → static HTML → Playwright.
 
-V1 collectors: Greenhouse, Lever, company career pages.
-
 Do not scrape LinkedIn. Do not bypass auth, CAPTCHA, rate limits, robots.txt, or anti-bot systems. Skip sources that cannot be accessed reliably and legally.
+
+### Company is separate from source
+
+A company does not know how it is collected. `target_companies` holds identity and research; `company_job_sources` holds one row per collectable feed:
+
+```
+TargetCompany
+   └── CompanyJobSource (ats_type, board_token, feed_url, collection_strategy, status)
+```
+
+A company can own several sources — for example a Greenhouse board for engineering and a Workday tenant for corporate roles — each with its own status and verification timestamp. The legacy `target_companies.ats_type` / `board_token` columns are kept in step for reporting, but the registry is what the pipeline reads.
+
+### Resolver, not a hardcoded map
+
+```
+CompanyJobSource → registry lookup by ats_type → adapter → RawJob → normalize → score
+```
+
+`collectors/registry.py` maps `ats_type` to an adapter factory. An unmapped ATS is not an error and not a silent skip: it resolves to `adapter_missing` so the coverage report can rank where the next adapter is worth writing.
+
+| ATS | Strategy | Adapter | Notes |
+|---|---|---|---|
+| Greenhouse | API | yes | board token |
+| Lever | API | yes | site token |
+| Personio | XML | yes | subdomain |
+| Ashby | API | yes | board name; descriptions inline |
+| SmartRecruiters | API | yes | paginated; detail fetch for descriptions |
+| Workable | API | yes | account subdomain |
+| Recruitee | API | yes | company subdomain |
+| Teamtailor | XML | yes | RSS; custom domains need `feed_url` |
+| Workday | API | yes | needs tenant **and** site id via `feed_url` |
+| Comeet, Jobvite, BambooHR | API/JSON/HTML | no | per-company token or unstable feed |
+| iCIMS, Taleo, SuccessFactors | browser | no | session-based portals |
+| Custom, career page | HTML/browser | no | needs per-company work |
+
+### Collection status
+
+Every attempt records a status instead of a blanket skip, so a company with zero jobs always explains itself:
+
+`discovered`, `ats_detected`, `needs_token`, `feed_available`, `collected`, `no_jobs`, `adapter_missing`, `feed_unavailable`, `auth_required`, `blocked`, `invalid_source`, `disabled`.
+
+The goal is **not** that every company has an API. It is that every company has a known collection strategy and a stated reason when it yields nothing.
+
+### ATS discovery
+
+`python -m app.jobs discover-sources` resolves the real ATS for each company using two signals:
+
+1. **Signatures** — ATS links found in the careers page HTML give a token directly.
+2. **Probing** — tokens derived from the slug and name are tried against each adapter's real feed.
+
+A configuration is stored only after the live feed returns a usable payload, and a probed token whose board reports a different company name is rejected as a name collision. `extra.detected_via` records whether a source came from a signature or a probe. This is why the workbook column alone was not enough: careers pages are mostly JavaScript-rendered, so the working token has to be verified, not assumed.
 
 ## Scoring (Phase 5)
 
@@ -133,7 +182,9 @@ Learning (Phase 10) adjusts a transparent preference model from accumulated deci
 | Stale or wrong visa evidence wastes applications | Timestamped evidence, freshness decay, mixed-evidence tests, `UNKNOWN` default |
 | LLM cost on noisy discovery | Hard filters first, analysis cache keyed on description hash |
 | Cover letter hallucinates experience | Pydantic output, candidate-profile-only facts, tests for invented experience |
-| Career pages inconsistent | Company-specific adapters only when Greenhouse/Lever are absent |
+| Career pages inconsistent | Detect the ATS behind the page instead of parsing it; per-company adapters last |
+| Guessed board tokens hit the wrong company | A token is stored only after the live feed responds, and is rejected if the board reports a different company name; `extra.detected_via` keeps it auditable |
+| Companies silently producing zero jobs | Per-source `CollectionStatus` plus the coverage report; `adapter_missing` is reported, never hidden |
 | Telegram message limits for cover letters | Send a preview + dashboard deep link |
 | Over-filtering good jobs | Conservative hard filters; `REVIEW` band for uncertain visa |
 | Under-filtering sponsorship theater | Job-posting claims are evidence, not confirmation; government/official sources rank higher |

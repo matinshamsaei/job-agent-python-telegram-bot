@@ -5,8 +5,67 @@ class AtsType(StrEnum):
     GREENHOUSE = "greenhouse"
     LEVER = "lever"
     PERSONIO_XML = "personio_xml"
+    ASHBY = "ashby"
+    SMARTRECRUITERS = "smartrecruiters"
+    WORKABLE = "workable"
+    RECRUITEE = "recruitee"
+    TEAMTAILOR = "teamtailor"
+    WORKDAY = "workday"
+    JOBVITE = "jobvite"
+    ICIMS = "icims"
+    COMEET = "comeet"
+    BAMBOOHR = "bamboohr"
+    TALEO = "taleo"
+    SUCCESSFACTORS = "successfactors"
+    CUSTOM = "custom"
     CAREER_PAGE = "career_page"
     UNKNOWN = "unknown"
+
+
+class CollectionStrategy(StrEnum):
+    """How a source is read. Chosen per source, never guessed by the collector."""
+
+    API = "api"
+    XML = "xml"
+    JSON = "json"
+    HTML = "html"
+    BROWSER = "browser"
+    SEARCH = "search"
+    MANUAL = "manual"
+    NONE = "none"
+
+
+class CollectionStatus(StrEnum):
+    """Outcome of one collection attempt against one source.
+
+    Replaces the old blanket `career_page_skipped` log so a run can explain
+    exactly why a company produced no jobs.
+    """
+
+    DISCOVERED = "discovered"
+    ATS_DETECTED = "ats_detected"
+    NEEDS_TOKEN = "needs_token"
+    FEED_AVAILABLE = "feed_available"
+    COLLECTED = "collected"
+    NO_JOBS = "no_jobs"
+    ADAPTER_MISSING = "adapter_missing"
+    FEED_UNAVAILABLE = "feed_unavailable"
+    AUTH_REQUIRED = "auth_required"
+    BLOCKED = "blocked"
+    INVALID_SOURCE = "invalid_source"
+    DISABLED = "disabled"
+
+
+TERMINAL_FAILURE_STATUSES = frozenset(
+    {
+        CollectionStatus.ADAPTER_MISSING,
+        CollectionStatus.FEED_UNAVAILABLE,
+        CollectionStatus.AUTH_REQUIRED,
+        CollectionStatus.BLOCKED,
+        CollectionStatus.INVALID_SOURCE,
+        CollectionStatus.NEEDS_TOKEN,
+    }
+)
 
 
 class VisaStatus(StrEnum):

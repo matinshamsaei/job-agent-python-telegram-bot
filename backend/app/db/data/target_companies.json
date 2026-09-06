@@ -32,6 +32,14 @@
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
       }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "careem",
+        "collection_strategy": "api",
+        "status": "collected"
+      }
     ]
   },
   {
@@ -195,8 +203,8 @@
     "name": "Kitopi",
     "country": "AE",
     "city": "Dubai",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "lever",
+    "board_token": "kitopi",
     "careers_url": "https://www.kitopi.com/careers/",
     "linkedin_url": "https://www.linkedin.com/company/kitopi/",
     "priority": 80,
@@ -222,6 +230,14 @@
         "type": "third_party",
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "lever",
+        "board_token": "kitopi",
+        "collection_strategy": "api",
+        "status": "feed_unavailable"
       }
     ]
   },
@@ -335,8 +351,8 @@
     "name": "Binance",
     "country": "AE",
     "city": "Dubai",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "lever",
+    "board_token": "binance",
     "careers_url": "https://www.binance.com/en/careers",
     "linkedin_url": "https://www.linkedin.com/company/binance/",
     "priority": 80,
@@ -363,6 +379,14 @@
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
       }
+    ],
+    "sources": [
+      {
+        "ats_type": "lever",
+        "board_token": "binance",
+        "collection_strategy": "api",
+        "status": "collected"
+      }
     ]
   },
   {
@@ -370,8 +394,8 @@
     "name": "Careem Pay",
     "country": "AE",
     "city": "Dubai",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "greenhouse",
+    "board_token": "careem",
     "careers_url": "https://www.careem.com/careers/",
     "linkedin_url": "https://www.linkedin.com/company/careem/",
     "priority": 80,
@@ -398,6 +422,14 @@
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
       }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "careem",
+        "collection_strategy": "api",
+        "status": "feed_available"
+      }
     ]
   },
   {
@@ -405,8 +437,8 @@
     "name": "Dubizzle Group",
     "country": "AE",
     "city": "Dubai",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "workable",
+    "board_token": "bayutdubizzle",
     "careers_url": "https://www.dubizzlegroup.com/careers/",
     "linkedin_url": "https://www.linkedin.com/company/dubizzle-group/",
     "priority": 80,
@@ -432,6 +464,14 @@
         "type": "third_party",
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "workable",
+        "board_token": "bayutdubizzle",
+        "collection_strategy": "api",
+        "status": "blocked"
       }
     ]
   },
@@ -650,8 +690,8 @@
     "name": "Tamara",
     "country": "SA",
     "city": "Riyadh",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "greenhouse",
+    "board_token": "tamara",
     "careers_url": "https://tamara.co/en-sa/careers",
     "linkedin_url": "https://www.linkedin.com/company/tamara/",
     "priority": 80,
@@ -685,6 +725,14 @@
         "type": "third_party",
         "confidence": 0.55,
         "text": "Official Greenhouse careers currently lists engineering roles including Engineering Manager and Product Engineer II - QA in Riyadh."
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "tamara",
+        "collection_strategy": "api",
+        "status": "collected"
       }
     ]
   },
@@ -1024,7 +1072,7 @@
     "name": "HungerStation",
     "country": "SA",
     "city": "Riyadh",
-    "ats_type": "career_page",
+    "ats_type": "workday",
     "board_token": null,
     "careers_url": "https://hungerstation.com/sa-en/careers",
     "linkedin_url": "https://www.linkedin.com/company/hungerstation/",
@@ -1052,6 +1100,15 @@
         "confidence": 0.35,
         "text": "Official careers page; sponsorship should be verified at job level"
       }
+    ],
+    "sources": [
+      {
+        "ats_type": "workday",
+        "board_token": null,
+        "collection_strategy": "api",
+        "status": "feed_available",
+        "feed_url": "https://deliveryhero.wd3.myworkdayjobs.com/hungerstation"
+      }
     ]
   },
   {
@@ -1059,8 +1116,8 @@
     "name": "Careem Saudi",
     "country": "SA",
     "city": "Riyadh",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "greenhouse",
+    "board_token": "careem",
     "careers_url": "https://www.careem.com/careers/",
     "linkedin_url": "https://www.linkedin.com/company/careem/",
     "priority": 80,
@@ -1087,6 +1144,14 @@
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
       }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "careem",
+        "collection_strategy": "api",
+        "status": "feed_available"
+      }
     ]
   },
   {
@@ -1094,8 +1159,8 @@
     "name": "Booking.com",
     "country": "NL",
     "city": "Amsterdam",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "icims",
+    "board_token": "internal-workingatbooking",
     "careers_url": "https://careers.booking.com/",
     "linkedin_url": "https://www.linkedin.com/company/booking-com/",
     "priority": 100,
@@ -1129,6 +1194,14 @@
         "type": "government",
         "confidence": 0.8,
         "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "icims",
+        "board_token": "internal-workingatbooking",
+        "collection_strategy": "browser",
+        "status": "adapter_missing"
       }
     ]
   },
@@ -1172,6 +1245,14 @@
         "type": "government",
         "confidence": 0.8,
         "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "adyen",
+        "collection_strategy": "api",
+        "status": "collected"
       }
     ]
   },
@@ -1266,8 +1347,8 @@
     "name": "Elastic",
     "country": "NL",
     "city": "Amsterdam",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "greenhouse",
+    "board_token": "elastic",
     "careers_url": "https://www.elastic.co/about/careers",
     "linkedin_url": "https://www.linkedin.com/company/elastic-co/",
     "priority": 100,
@@ -1302,6 +1383,14 @@
         "confidence": 0.8,
         "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
       }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "elastic",
+        "collection_strategy": "api",
+        "status": "collected"
+      }
     ]
   },
   {
@@ -1309,8 +1398,8 @@
     "name": "Databricks",
     "country": "NL",
     "city": "Amsterdam",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "greenhouse",
+    "board_token": "databricks",
     "careers_url": "https://www.databricks.com/company/careers",
     "linkedin_url": "https://www.linkedin.com/company/databricks/",
     "priority": 100,
@@ -1345,6 +1434,14 @@
         "confidence": 0.8,
         "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
       }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "databricks",
+        "collection_strategy": "api",
+        "status": "collected"
+      }
     ]
   },
   {
@@ -1352,8 +1449,8 @@
     "name": "Miro",
     "country": "NL",
     "city": "Amsterdam",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "ashby",
+    "board_token": "miro",
     "careers_url": "https://miro.com/careers/",
     "linkedin_url": "https://www.linkedin.com/company/miro/",
     "priority": 100,
@@ -1387,6 +1484,14 @@
         "type": "government",
         "confidence": 0.8,
         "text": "Recorded as IND recognised sponsor in the 2026 research workbook."
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "ashby",
+        "board_token": "miro",
+        "collection_strategy": "api",
+        "status": "collected"
       }
     ]
   },
@@ -1860,8 +1965,8 @@
     "name": "Delivery Hero",
     "country": "DE",
     "city": "Berlin",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "smartrecruiters",
+    "board_token": "Deliveryhero",
     "careers_url": "https://careers.deliveryhero.com/",
     "linkedin_url": "https://www.linkedin.com/company/delivery-hero/",
     "priority": 80,
@@ -1887,6 +1992,14 @@
         "type": "third_party",
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "smartrecruiters",
+        "board_token": "Deliveryhero",
+        "collection_strategy": "api",
+        "status": "feed_available"
       }
     ]
   },
@@ -1923,6 +2036,14 @@
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
       }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "n26",
+        "collection_strategy": "api",
+        "status": "collected"
+      }
     ]
   },
   {
@@ -1930,8 +2051,8 @@
     "name": "Celonis",
     "country": "DE",
     "city": "Munich",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "greenhouse",
+    "board_token": "celonis",
     "careers_url": "https://www.celonis.com/careers/",
     "linkedin_url": "https://www.linkedin.com/company/celonis/",
     "priority": 80,
@@ -1957,6 +2078,14 @@
         "type": "third_party",
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "celonis",
+        "collection_strategy": "api",
+        "status": "feed_available"
       }
     ]
   },
@@ -1992,6 +2121,14 @@
         "type": "third_party",
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "personio_xml",
+        "board_token": "personio",
+        "collection_strategy": "xml",
+        "status": "collected"
       }
     ]
   },
@@ -2035,8 +2172,8 @@
     "name": "HubSpot Germany",
     "country": "DE",
     "city": "Berlin",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "greenhouse",
+    "board_token": "hubspotjobs",
     "careers_url": "https://www.hubspot.com/careers",
     "linkedin_url": "https://www.linkedin.com/company/hubspot/",
     "priority": 80,
@@ -2062,6 +2199,14 @@
         "type": "third_party",
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "hubspotjobs",
+        "collection_strategy": "api",
+        "status": "feed_available"
       }
     ]
   },
@@ -2315,8 +2460,8 @@
     "name": "Spotify",
     "country": "SE",
     "city": "Stockholm",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "lever",
+    "board_token": "spotify",
     "careers_url": "https://www.lifeatspotify.com/jobs",
     "linkedin_url": "https://www.linkedin.com/company/spotify/",
     "priority": 80,
@@ -2342,6 +2487,14 @@
         "type": "third_party",
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "lever",
+        "board_token": "spotify",
+        "collection_strategy": "api",
+        "status": "feed_available"
       }
     ]
   },
@@ -2525,8 +2678,8 @@
     "name": "Truecaller",
     "country": "SE",
     "city": "Stockholm",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "greenhouse",
+    "board_token": "truecaller",
     "careers_url": "https://www.truecaller.com/careers",
     "linkedin_url": "https://www.linkedin.com/company/truecaller/",
     "priority": 80,
@@ -2552,6 +2705,14 @@
         "type": "third_party",
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "truecaller",
+        "collection_strategy": "api",
+        "status": "feed_available"
       }
     ]
   },
@@ -2798,6 +2959,14 @@
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
       }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "hubspotjobs",
+        "collection_strategy": "api",
+        "status": "collected"
+      }
     ]
   },
   {
@@ -2805,7 +2974,7 @@
     "name": "Workday Ireland",
     "country": "IE",
     "city": "Dublin",
-    "ats_type": "career_page",
+    "ats_type": "workday",
     "board_token": null,
     "careers_url": "https://www.workday.com/en-us/company/careers.html",
     "linkedin_url": "https://www.linkedin.com/company/workday/",
@@ -2832,6 +3001,15 @@
         "type": "third_party",
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "workday",
+        "board_token": null,
+        "collection_strategy": "api",
+        "status": "feed_available",
+        "feed_url": "https://workday.wd5.myworkdayjobs.com/Workday"
       }
     ]
   },
@@ -2867,6 +3045,14 @@
         "type": "third_party",
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "intercom",
+        "collection_strategy": "api",
+        "status": "collected"
       }
     ]
   },
@@ -2910,8 +3096,8 @@
     "name": "Pleo",
     "country": "DK",
     "city": "Copenhagen",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "ashby",
+    "board_token": "pleo",
     "careers_url": "https://www.pleo.io/en/careers",
     "linkedin_url": "https://www.linkedin.com/company/pleo/",
     "priority": 80,
@@ -2938,6 +3124,14 @@
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
       }
+    ],
+    "sources": [
+      {
+        "ats_type": "ashby",
+        "board_token": "pleo",
+        "collection_strategy": "api",
+        "status": "feed_available"
+      }
     ]
   },
   {
@@ -2945,8 +3139,8 @@
     "name": "Trustpilot",
     "country": "DK",
     "city": "Copenhagen",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "greenhouse",
+    "board_token": "trustpilot",
     "careers_url": "https://corporate.trustpilot.com/careers",
     "linkedin_url": "https://www.linkedin.com/company/trustpilot/",
     "priority": 80,
@@ -2973,6 +3167,14 @@
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
       }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "trustpilot",
+        "collection_strategy": "api",
+        "status": "feed_available"
+      }
     ]
   },
   {
@@ -2980,8 +3182,8 @@
     "name": "Too Good To Go",
     "country": "DK",
     "city": "Copenhagen",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "greenhouse",
+    "board_token": "toogoodtogo",
     "careers_url": "https://www.toogoodtogo.com/en/careers",
     "linkedin_url": "https://www.linkedin.com/company/too-good-to-go/",
     "priority": 80,
@@ -3007,6 +3209,14 @@
         "type": "third_party",
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "toogoodtogo",
+        "collection_strategy": "api",
+        "status": "feed_available"
       }
     ]
   },
@@ -3050,8 +3260,8 @@
     "name": "Sitecore",
     "country": "DK",
     "city": "Copenhagen",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "ashby",
+    "board_token": "sitecore",
     "careers_url": "https://www.sitecore.com/company/careers",
     "linkedin_url": "https://www.linkedin.com/company/sitecore/",
     "priority": 80,
@@ -3078,6 +3288,14 @@
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
       }
+    ],
+    "sources": [
+      {
+        "ats_type": "ashby",
+        "board_token": "sitecore",
+        "collection_strategy": "api",
+        "status": "feed_available"
+      }
     ]
   },
   {
@@ -3085,8 +3303,8 @@
     "name": "Wolt",
     "country": "FI",
     "city": "Helsinki",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "greenhouse",
+    "board_token": "wolt",
     "careers_url": "https://careers.wolt.com/",
     "linkedin_url": "https://www.linkedin.com/company/wolt/",
     "priority": 80,
@@ -3113,6 +3331,14 @@
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
       }
+    ],
+    "sources": [
+      {
+        "ats_type": "greenhouse",
+        "board_token": "wolt",
+        "collection_strategy": "api",
+        "status": "feed_available"
+      }
     ]
   },
   {
@@ -3120,8 +3346,8 @@
     "name": "Supercell",
     "country": "FI",
     "city": "Helsinki",
-    "ats_type": "career_page",
-    "board_token": null,
+    "ats_type": "ashby",
+    "board_token": "supercell",
     "careers_url": "https://supercell.com/en/careers/",
     "linkedin_url": "https://www.linkedin.com/company/supercell/",
     "priority": 80,
@@ -3147,6 +3373,14 @@
         "type": "third_party",
         "confidence": 0.55,
         "text": "Official careers page; sponsorship should be verified at job level"
+      }
+    ],
+    "sources": [
+      {
+        "ats_type": "ashby",
+        "board_token": "supercell",
+        "collection_strategy": "api",
+        "status": "feed_available"
       }
     ]
   },

@@ -73,6 +73,7 @@ class TargetCompany(Base):
     aliases: Mapped[list["CompanyAlias"]] = relationship(back_populates="company")
     evidence: Mapped[list["CompanyEvidence"]] = relationship(back_populates="company")
     jobs: Mapped[list["Job"]] = relationship(back_populates="company")
+    sources: Mapped[list["CompanyJobSource"]] = relationship(back_populates="company")
 
 
 class CompanyAlias(Base):
@@ -113,14 +114,61 @@ class CompanyEvidence(Base):
 
 
 class JobSource(Base):
+    """Catalog of known ATS platforms and whether an adapter exists for each."""
+
     __tablename__ = "job_sources"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(80), unique=True)
     description: Mapped[str | None] = mapped_column(String(300), nullable=True)
+    ats_type: Mapped[str] = mapped_column(String(40), default="unknown", index=True)
+    collection_strategy: Mapped[str] = mapped_column(String(20), default="none")
+    adapter_implemented: Mapped[bool] = mapped_column(Boolean, default=False)
+    roadmap_phase: Mapped[int] = mapped_column(Integer, default=0)
+    docs_url: Mapped[str | None] = mapped_column(String(500), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
+    )
+
+
+class CompanyJobSource(Base):
+    """One collectable feed belonging to a company.
+
+    A company can have several (for example a Greenhouse board for engineering
+    and a Workday tenant for corporate roles), so the ATS configuration lives
+    here rather than on `target_companies`.
+    """
+
+    __tablename__ = "company_job_sources"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    company_id: Mapped[int] = mapped_column(ForeignKey("target_companies.id"), index=True)
+    label: Mapped[str] = mapped_column(String(120), default="primary")
+    ats_type: Mapped[str] = mapped_column(String(40), default="unknown", index=True)
+    board_token: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    feed_url: Mapped[str | None] = mapped_column(String(1000), nullable=True)
+    job_url_pattern: Mapped[str | None] = mapped_column(String(1000), nullable=True)
+    collection_strategy: Mapped[str] = mapped_column(String(20), default="none")
+    enabled: Mapped[bool] = mapped_column(Boolean, default=True)
+    priority: Mapped[int] = mapped_column(Integer, default=50)
+    status: Mapped[str] = mapped_column(String(30), default="discovered", index=True)
+    status_detail: Mapped[str | None] = mapped_column(Text, nullable=True)
+    last_attempted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_collected_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    last_job_count: Mapped[int] = mapped_column(Integer, default=0)
+    consecutive_failures: Mapped[int] = mapped_column(Integer, default=0)
+    extra: Mapped[dict] = mapped_column(JSONB, default=dict)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
+    )
+
+    company: Mapped[TargetCompany] = relationship(back_populates="sources")
+
+    __table_args__ = (
+        UniqueConstraint("company_id", "label", name="uq_company_job_source_label"),
     )
 
 

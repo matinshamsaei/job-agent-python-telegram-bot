@@ -91,6 +91,28 @@ uv run python -m app.db.seed
 
 Workbook changes can be converted again with `scripts/import_target_companies.py`. Sponsorship from that workbook is stored as `likely` / `unknown`, never `confirmed`. Nordic countries (SE, DK, FI, NO) are included in the candidate target list so those jobs are not location-filtered out.
 
+### Companies vs job sources
+
+A company does not know how it is collected. Identity and research live on `target_companies`; the ATS configuration lives on `company_job_sources`, one row per collectable feed. A company may have several:
+
+```json
+{
+  "slug": "acme",
+  "name": "Acme",
+  "careers_url": "https://acme.com/careers",
+  "sources": [
+    { "ats_type": "greenhouse", "board_token": "acme" },
+    {
+      "label": "corporate",
+      "ats_type": "workday",
+      "feed_url": "https://acme.wd3.myworkdayjobs.com/en-US/Acme_Careers"
+    }
+  ]
+}
+```
+
+If a company has no `sources` array, one `primary` source is derived from the legacy `ats_type` / `board_token` fields, so older seed files keep working.
+
 ## Redis
 
 Used in Phase 1 for the readiness check. Later: Dramatiq broker/queue and cache.
@@ -137,6 +159,76 @@ To handle APPLY / SKIP / REJECT / GENERATE COVER LETTER buttons:
 
 ```powershell
 uv run python -m app.notifications.bot
+```
+
+## Which ATS platforms are collected
+
+Jobs are read from public ATS feeds only. Careers-page HTML is never scraped.
+
+| ATS | Strategy | Configured with |
+|---|---|---|
+| Greenhouse | API | board token |
+| Lever | API | site token |
+| Personio | XML | subdomain |
+| Ashby | API | job board name |
+| SmartRecruiters | API | company identifier |
+| Workable | API | account subdomain |
+| Recruitee | API | company subdomain |
+| Teamtailor | RSS | subdomain or `feed_url` |
+| Workday | API | `feed_url` (needs tenant **and** site id) |
+
+Comeet, Jobvite, BambooHR, iCIMS, Taleo, SuccessFactors and bespoke career pages are recognised but have no adapter yet. They are reported as `adapter_missing` rather than skipped silently.
+
+### Why a company can return zero jobs
+
+Every collection attempt stores a status on its source, so there is always a reason:
+
+| Status | Meaning |
+|---|---|
+| `collected` | feed read, postings returned |
+| `no_jobs` | feed read, zero open postings |
+| `needs_token` | ATS known, board token or feed url missing |
+| `adapter_missing` | ATS known, no adapter implemented yet |
+| `feed_unavailable` | wrong token, or the feed is down |
+| `auth_required` | feed needs credentials |
+| `blocked` | rate limited |
+| `invalid_source` | feed responded but could not be parsed |
+| `ats_detected` | ATS found on the careers page but its feed was not readable |
+| `discovered` | not investigated yet |
+
+## Find each company's real ATS
+
+Most careers pages are JavaScript-rendered, so a board token has to be discovered and verified rather than assumed. This command inspects each careers page for ATS links, then probes tokens derived from the company slug and name against the real feeds:
+
+```powershell
+cd backend
+uv run python -m app.jobs discover-sources
+```
+
+A source is stored **only** after the live feed returns a usable payload, and a probed token whose board reports a different company name is rejected as a name collision. `extra.detected_via` records whether the match came from a page signature or a probe.
+
+```powershell
+uv run python -m app.jobs discover-sources --dry-run                 # report only
+uv run python -m app.jobs discover-sources --only-unsupported        # skip solved companies
+uv run python -m app.jobs discover-sources --slug adyen --slug wolt  # specific companies
+uv run python -m app.jobs discover-sources --no-probe                # trust page links only
+uv run python -m app.jobs discover-sources --report findings.json
+```
+
+Verified findings live in PostgreSQL. Write them back into the seed file so they survive a database reset:
+
+```powershell
+uv run python -m app.jobs sync-seed-sources
+uv run python -m app.jobs sync-seed-sources --dry-run
+```
+
+## Adapter coverage
+
+Shows how much of the target list is collectable and ranks the missing adapters by how many companies they would unlock. The goal is not that every company has an API — it is that every company has a known strategy.
+
+```powershell
+cd backend
+uv run python -m app.jobs coverage
 ```
 
 ## Workers and scheduler

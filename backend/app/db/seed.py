@@ -8,14 +8,40 @@ import structlog
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.core.enums import AtsType, VisaStatus
+from app.collectors.registry import strategy_for, supported_ats_types
+from app.core.enums import AtsType, CollectionStatus, VisaStatus
 from app.db.seed_data import CANDIDATE, COMPANIES, JOB_SOURCES, RESUMES
-from app.models import CandidateProfile, CandidateResume, CompanyAlias, CompanyEvidence, JobSource, TargetCompany
+from app.models import (
+    CandidateProfile,
+    CandidateResume,
+    CompanyAlias,
+    CompanyEvidence,
+    CompanyJobSource,
+    JobSource,
+    TargetCompany,
+)
 
 logger = structlog.get_logger(__name__)
 
 DATA_PATH = Path(__file__).resolve().parent / "data" / "target_companies.json"
-VERIFIED_ATS = {AtsType.GREENHOUSE.value, AtsType.LEVER.value, AtsType.PERSONIO_XML.value}
+VERIFIED_ATS = supported_ats_types()
+SOURCE_COLUMNS = (
+    "ats_type",
+    "board_token",
+    "feed_url",
+    "job_url_pattern",
+    "collection_strategy",
+    "enabled",
+    "priority",
+)
+SOURCE_CATALOG_COLUMNS = (
+    "description",
+    "ats_type",
+    "collection_strategy",
+    "adapter_implemented",
+    "roadmap_phase",
+    "docs_url",
+)
 SEED_EVIDENCE_SOURCES = {
     "europe_mena_target_companies_2026",
     "verified_example_2026",
@@ -55,10 +81,14 @@ async def seed_all(session: AsyncSession, replace_evidence: bool = True) -> None
 
 
 async def _seed_sources(session: AsyncSession) -> None:
+    existing = {row.name: row for row in (await session.scalars(select(JobSource))).all()}
     for source in JOB_SOURCES:
-        if await session.scalar(select(JobSource.id).where(JobSource.name == source["name"])):
+        row = existing.get(source["name"])
+        if row is None:
+            session.add(JobSource(**source))
             continue
-        session.add(JobSource(**source))
+        for column in SOURCE_CATALOG_COLUMNS:
+            setattr(row, column, source[column])
 
 
 async def _seed_candidate(session: AsyncSession) -> None:
@@ -86,6 +116,7 @@ async def _upsert_companies(
     for row in rows:
         payload = dict(row)
         evidence = payload.pop("evidence", [])
+        declared_sources = payload.pop("sources", None)
         aliases = list(payload.pop("aliases", [])) + ALIASES_BY_SLUG.get(payload["slug"], [])
         if payload.get("visa_status") == VisaStatus.CONFIRMED.value:
             payload["visa_status"] = VisaStatus.LIKELY.value
@@ -105,6 +136,7 @@ async def _upsert_companies(
             for key in COMPANY_COLUMNS:
                 setattr(company, key, payload.get(key))
 
+        await _upsert_company_sources(session, company, declared_sources)
         await _sync_seed_evidence(session, company, evidence, replace=replace_evidence)
         for alias in aliases:
             exists = await session.scalar(
@@ -119,6 +151,87 @@ async def _upsert_companies(
     for slug, company in existing.items():
         if slug not in json_slugs:
             company.enabled = False
+
+
+def normalize_source(entry: dict, index: int) -> dict:
+    """Fill in the derivable parts of a declared source."""
+    ats_type = entry.get("ats_type") or AtsType.UNKNOWN.value
+    payload = {
+        "label": entry.get("label") or ("primary" if index == 0 else f"{ats_type}-{index}"),
+        "ats_type": ats_type,
+        "board_token": entry.get("board_token"),
+        "feed_url": entry.get("feed_url"),
+        "job_url_pattern": entry.get("job_url_pattern"),
+        "collection_strategy": entry.get("collection_strategy") or strategy_for(ats_type),
+        "enabled": entry.get("enabled", True),
+        "priority": int(entry.get("priority") or 50),
+    }
+    status = entry.get("status")
+    if status is None:
+        status = (
+            CollectionStatus.FEED_AVAILABLE.value
+            if ats_type in VERIFIED_ATS and (payload["board_token"] or payload["feed_url"])
+            else CollectionStatus.DISCOVERED.value
+        )
+    payload["status"] = status
+    return payload
+
+
+def declared_sources_for(row: dict) -> list[dict]:
+    """Read the `sources` list, falling back to the legacy flat ATS columns."""
+    entries = row.get("sources")
+    if not entries:
+        entries = [{"ats_type": row.get("ats_type"), "board_token": row.get("board_token")}]
+    return [normalize_source(entry, index) for index, entry in enumerate(entries)]
+
+
+async def _upsert_company_sources(
+    session: AsyncSession,
+    company: TargetCompany,
+    declared: list[dict] | None,
+) -> None:
+    entries = declared_sources_for(
+        {"ats_type": company.ats_type, "board_token": company.board_token, "sources": declared}
+    )
+    current = {
+        source.label: source
+        for source in (
+            await session.scalars(
+                select(CompanyJobSource).where(CompanyJobSource.company_id == company.id)
+            )
+        ).all()
+    }
+    for entry in entries:
+        payload = dict(entry)
+        status = payload.pop("status")
+        source = current.get(payload["label"])
+        if source is None:
+            session.add(CompanyJobSource(company_id=company.id, status=status, **payload))
+            continue
+        # A source verified against a live feed (or with a concrete ATS) outranks
+        # the workbook's generic career_page / unknown placeholder.
+        if _source_outranks(source, payload):
+            continue
+        for column in SOURCE_COLUMNS:
+            setattr(source, column, payload[column])
+        source.status = status
+
+
+def _source_outranks(source: CompanyJobSource, payload: dict) -> bool:
+    """True when the DB row is more specific than the seed payload."""
+    incoming = payload["ats_type"]
+    unresolved = {AtsType.CAREER_PAGE.value, AtsType.UNKNOWN.value}
+    if source.ats_type == incoming:
+        # Keep a verified token over an empty re-seed.
+        if source.board_token and not payload.get("board_token"):
+            return True
+        return False
+    if incoming in unresolved:
+        if source.ats_type in VERIFIED_ATS:
+            return True
+        if source.ats_type not in unresolved:
+            return True
+    return False
 
 
 async def _sync_seed_evidence(

@@ -1,4 +1,4 @@
-from app.core.enums import AtsType, ResumeVariant, VisaStatus
+from app.core.enums import AtsType, CollectionStrategy, ResumeVariant, VisaStatus
 
 CANDIDATE = {
     "name": "Candidate",
@@ -304,9 +304,157 @@ COMPANIES = [
     },
 ]
 
+def _source(
+    name: str,
+    description: str,
+    strategy: CollectionStrategy,
+    *,
+    implemented: bool,
+    phase: int,
+    docs_url: str | None = None,
+) -> dict:
+    return {
+        "name": name,
+        "description": description,
+        "ats_type": name,
+        "collection_strategy": strategy.value,
+        "adapter_implemented": implemented,
+        "roadmap_phase": phase,
+        "docs_url": docs_url,
+    }
+
+
+# Catalog of every ATS the project can recognise. `adapter_implemented` is what
+# the coverage report uses to show where the next adapter is worth building.
 JOB_SOURCES = [
-    {"name": "greenhouse", "description": "Greenhouse Job Board API"},
-    {"name": "lever", "description": "Lever postings API"},
-    {"name": "personio_xml", "description": "Personio public XML feed"},
-    {"name": "career_page", "description": "Company career page (no public ATS feed yet)"},
+    _source(
+        AtsType.GREENHOUSE.value,
+        "Greenhouse job board API",
+        CollectionStrategy.API,
+        implemented=True,
+        phase=1,
+        docs_url="https://developers.greenhouse.io/job-board.html",
+    ),
+    _source(
+        AtsType.LEVER.value,
+        "Lever postings API",
+        CollectionStrategy.API,
+        implemented=True,
+        phase=1,
+        docs_url="https://github.com/lever/postings-api",
+    ),
+    _source(
+        AtsType.PERSONIO_XML.value,
+        "Personio public XML feed",
+        CollectionStrategy.XML,
+        implemented=True,
+        phase=1,
+    ),
+    _source(
+        AtsType.ASHBY.value,
+        "Ashby public job board API",
+        CollectionStrategy.API,
+        implemented=True,
+        phase=1,
+        docs_url="https://developers.ashbyhq.com/reference/postingapi",
+    ),
+    _source(
+        AtsType.SMARTRECRUITERS.value,
+        "SmartRecruiters public postings API",
+        CollectionStrategy.API,
+        implemented=True,
+        phase=1,
+        docs_url="https://developers.smartrecruiters.com/reference/postingapisearch",
+    ),
+    _source(
+        AtsType.WORKABLE.value,
+        "Workable public account feed",
+        CollectionStrategy.API,
+        implemented=True,
+        phase=1,
+    ),
+    _source(
+        AtsType.RECRUITEE.value,
+        "Recruitee public offers feed",
+        CollectionStrategy.API,
+        implemented=True,
+        phase=2,
+    ),
+    _source(
+        AtsType.TEAMTAILOR.value,
+        "Teamtailor careers RSS feed",
+        CollectionStrategy.XML,
+        implemented=True,
+        phase=2,
+    ),
+    _source(
+        AtsType.WORKDAY.value,
+        "Workday CXS job search API (needs tenant and site id)",
+        CollectionStrategy.API,
+        implemented=True,
+        phase=2,
+    ),
+    _source(
+        AtsType.COMEET.value,
+        "Comeet careers API (per-company token required)",
+        CollectionStrategy.API,
+        implemented=False,
+        phase=3,
+    ),
+    _source(
+        AtsType.JOBVITE.value,
+        "Jobvite careers site",
+        CollectionStrategy.HTML,
+        implemented=False,
+        phase=3,
+    ),
+    _source(
+        AtsType.BAMBOOHR.value,
+        "BambooHR careers list",
+        CollectionStrategy.JSON,
+        implemented=False,
+        phase=3,
+    ),
+    _source(
+        AtsType.ICIMS.value,
+        "iCIMS portal (session based)",
+        CollectionStrategy.BROWSER,
+        implemented=False,
+        phase=4,
+    ),
+    _source(
+        AtsType.TALEO.value,
+        "Oracle Taleo portal",
+        CollectionStrategy.BROWSER,
+        implemented=False,
+        phase=4,
+    ),
+    _source(
+        AtsType.SUCCESSFACTORS.value,
+        "SAP SuccessFactors (credentialed OData API)",
+        CollectionStrategy.BROWSER,
+        implemented=False,
+        phase=4,
+    ),
+    _source(
+        AtsType.CUSTOM.value,
+        "Bespoke company jobs API",
+        CollectionStrategy.HTML,
+        implemented=False,
+        phase=4,
+    ),
+    _source(
+        AtsType.CAREER_PAGE.value,
+        "HTML careers page with no public feed",
+        CollectionStrategy.BROWSER,
+        implemented=False,
+        phase=4,
+    ),
+    _source(
+        AtsType.UNKNOWN.value,
+        "ATS not identified yet",
+        CollectionStrategy.NONE,
+        implemented=False,
+        phase=0,
+    ),
 ]

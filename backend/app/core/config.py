@@ -40,6 +40,11 @@ class Settings(BaseSettings):
     evidence_half_life_days: int = 180
     http_timeout_seconds: float = 20.0
     collector_pause_seconds: float = 0.35
+    # ATS detection probes many dead subdomains, so it uses a tighter timeout
+    # and a small amount of concurrency across different ATS hosts.
+    detect_timeout_seconds: float = 8.0
+    detect_pause_seconds: float = 0.25
+    detect_concurrency: int = 2
 
     @field_validator("log_level")
     @classmethod
