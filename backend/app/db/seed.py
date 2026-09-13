@@ -97,12 +97,24 @@ async def _seed_candidate(session: AsyncSession) -> None:
         profile = CandidateProfile(**CANDIDATE)
         session.add(profile)
         await session.flush()
-        for resume in RESUMES:
+    else:
+        for key, value in CANDIDATE.items():
+            setattr(profile, key, value)
+        await session.flush()
+
+    existing = {
+        row.variant: row
+        for row in (await session.scalars(select(CandidateResume).where(CandidateResume.profile_id == profile.id))).all()
+    }
+    for resume in RESUMES:
+        row = existing.get(resume["variant"])
+        if row is None:
             session.add(CandidateResume(profile_id=profile.id, **resume))
-        return
-    profile.target_countries = list(CANDIDATE["target_countries"])
-    profile.preferred_countries = list(CANDIDATE["preferred_countries"])
-    profile.target_roles = list(CANDIDATE["target_roles"])
+            continue
+        row.title = resume["title"]
+        row.content = resume["content"]
+        row.skills = resume["skills"]
+        row.is_default = resume["is_default"]
 
 
 async def _upsert_companies(

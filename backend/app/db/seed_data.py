@@ -1,61 +1,244 @@
 from app.core.enums import AtsType, CollectionStrategy, ResumeVariant, VisaStatus
 
+SOFTWARE_ENGINEER_SKILLS = [
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Vue",
+    "Nuxt",
+    "Redux",
+    "Zustand",
+    "Pinia",
+    "Tailwind",
+    "MUI",
+    "Ant Design",
+    "HTML",
+    "CSS",
+    "SCSS",
+    "Node.js",
+    "Express",
+    "NestJS",
+    "Python",
+    "Django",
+    "Microservices",
+    "Redis",
+    "Kafka",
+    "RabbitMQ",
+    "WebSockets",
+    "GraphQL",
+    "MQTT",
+    "REST",
+    "gRPC",
+    "Docker",
+    "Terraform",
+    "OpenTelemetry",
+    "Grafana",
+    "Linux",
+    "Nginx",
+    "AWS",
+    "S3",
+    "Nexus",
+    "ArgoCD",
+    "MongoDB",
+    "PostgreSQL",
+    "MySQL",
+    "Prisma",
+    "n8n",
+    "Jest",
+    "Vitest",
+    "Cypress",
+    "Playwright",
+    "Pytest",
+    "SonarQube",
+    "Bugsnag",
+    "Git",
+    "Vite",
+    "Webpack",
+    "Rollup",
+    "Rolldown",
+    "NX",
+    "Turborepo",
+    "Sentry",
+    "Mapbox",
+    "Figma",
+]
+
+FRONTEND_ENGINEER_SKILLS = [
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Vue",
+    "Nuxt",
+    "HTML",
+    "CSS",
+    "Accessibility",
+    "Core Web Vitals",
+    "Micro-Frontends",
+    "System Design",
+    "REST",
+    "GraphQL",
+    "gRPC",
+    "WebSockets",
+    "SignalR",
+    "MQTT",
+    "Jest",
+    "Vitest",
+    "Cypress",
+    "Playwright",
+    "SonarQube",
+    "Bugsnag",
+    "n8n",
+    "GitLab CI",
+    "GitHub Actions",
+    "Docker",
+    "AWS",
+    "S3",
+    "Linux",
+    "Nexus",
+    "ArgoCD",
+    "Node.js",
+    "Express",
+    "NestJS",
+    "MongoDB",
+    "MySQL",
+    "PostgreSQL",
+    "Prisma",
+    "Git",
+    "Vite",
+    "Webpack",
+    "Rollup",
+    "Rolldown",
+    "NX",
+    "Turborepo",
+    "Sentry",
+    "Mapbox",
+    "Figma",
+]
+
+SOFTWARE_ENGINEER_RESUME = """
+Matin Shamsaei
+Senior Software Engineer
+Email: matinshamsaei.gh@gmail.com | Portfolio: matinshamsaei.com | Location: Istanbul
+English: Fluent
+
+Summary
+Senior Software Engineer with 7+ years of experience owning products end-to-end, from system design and implementation to deployment, monitoring, and debugging. Experienced in building and scaling products serving 5M+ users, and turning complex requirements into reliable production systems. Uses AI-assisted engineering to accelerate delivery and problem-solving.
+
+Experience
+Senior Software Engineer — Tapsi Doctor · Aug 2025 – Present · Tehran (Remote)
+- Designed CI/CD and release automation pipelines with n8n, Docker, and Amazon S3 CDN, reducing manual deployment effort by approximately 70%.
+- Led the migration of critical services to a microservices architecture, introducing asynchronous event-driven communication with Kafka and improving system scalability while reducing deployment time by 40% and production incidents by 30%.
+- Integrated AI into the team's engineering workflow, establishing reusable practices for code generation, debugging, testing, and reviews that accelerated development and improved engineering productivity.
+- Designed and implemented realtime services, including event ingestion pipelines, background processing, scheduling, and engagement-triggering mechanisms.
+- Built structured logging, telemetry, and monitoring across services, improving production reliability and using AI-assisted log analysis to accelerate root-cause detection.
+
+Tech Lead / Senior Software Engineer — Routaa · Jul 2021 – Aug 2025 · Tehran
+- Owned end-to-end delivery of 6+ production applications, from technical discovery and architecture through development, infrastructure, deployment, and production support.
+- Used AI-assisted codebase analysis to generate migration plans, identify dependency risks, and accelerate test coverage while retaining developer-led review and validation.
+- Led the modernization of legacy frontends into modular, feature-based architectures, introducing shared foundations that reduced UI-related defects by ~30% and shortened feature implementation time by ~20%.
+- Designed and maintained a shared Design System used across multiple applications, increasing component reuse by ~60% and reducing duplicated UI development.
+- Established production engineering and infrastructure practices around containerization, CI/CD, monitoring, and release workflows.
+- Took ownership of complex cross-stack features from requirement to production, coordinating frontend, backend, API, data, and integration work.
+
+Frontend Developer — Apollo · Aug 2020 – Jul 2021 · Estonia (Remote)
+- Built 3 applications with Vue/Nuxt in the cryptocurrency and e-commerce domain, including public-facing platforms and admin panels.
+- Worked closely with designers and backend engineers to deliver performant, user-centric interfaces under tight timelines.
+- Built real-time analytics and reporting dashboards, enabling operational visibility and faster data-driven decision-making.
+- Improved application scalability through reusable architecture patterns, modular component design, and optimized data flows.
+
+Frontend Developer — TMBA · May 2019 – Aug 2020 · Tehran
+- Delivered multiple client-facing e-commerce websites with a strong focus on clean UI and performance.
+- Improved internal admin tools through UI refactoring, reducing complexity and improving usability.
+
+Skills
+Frontend: TypeScript, JavaScript, React, Next.js, Vue, Nuxt, Redux, Zustand, Pinia, Tailwind, MUI, Ant Design, HTML, CSS, SCSS
+Backend: Node.js, Express.js, Nest.js, Python, Django, Microservices, Redis, Kafka, RabbitMQ
+Connection: WebSockets, GraphQL, MQTT, REST, gRPC
+DevOps: Docker, Terraform, OpenTelemetry, Grafana, Linux, Nginx, AWS, S3, Nexus, ArgoCD
+Databases: MongoDB, PostgreSQL, MySQL, Prisma
+AI & Automation: Claude Code, Cursor, GitHub Copilot, AI-assisted development, n8n, AI workflow automation
+Testing: Jest, Vitest, Cypress, Playwright, Pytest, SonarQube, Bugsnag, integration testing, E2E testing
+Build & Tooling: Git, Vite, Webpack, Rollup, Rolldown, NX, Turborepo, Sentry, Mapbox, Figma
+
+Education
+Bachelor of Computer Engineering — Azad University · 2018 – 2023
+""".strip()
+
+FRONTEND_ENGINEER_RESUME = """
+Matin Shamsaei
+Senior Frontend Engineer
+Email: matinshamsaei.gh@gmail.com | Portfolio: matinshamsaei.com | Location: Istanbul
+English: Fluent
+
+Summary
+Senior Frontend Engineer with 7+ years of experience building high-scale, production-grade applications used by 5M+ users. Known for taking frontend ownership from architecture and implementation through deployment, monitoring, and debugging, and turning complex requirements into performant, maintainable user experiences. Leverages AI-assisted engineering to ship faster, modernize codebases, and solve complex problems.
+
+Experience
+Senior Frontend Engineer — Tapsi Doctor · Aug 2025 – Present · Tehran (Remote)
+- Owned frontend architecture and end-to-end delivery for high-scale healthcare products, taking features from technical design and implementation through deployment, monitoring, and production debugging.
+- Modernized critical frontend modules into scalable, reusable architecture, reducing duplicated implementation by ~35%, improving development consistency, and shortening delivery time for new product flows by ~25%.
+- Designed and automated frontend CI/CD and release workflows using Docker, n8n, and S3-based delivery, reducing manual deployment effort by ~70%.
+- Built real-time frontend experiences for event-driven notifications, background jobs, scheduling, and engagement flows.
+- Introduced AI-assisted development workflows into daily frontend engineering, using AI to analyze unfamiliar modules, map dependencies, accelerate large-scale refactoring, create and update tests, and investigate production errors.
+
+Frontend Team Lead — Routaa · Jul 2021 – Aug 2025 · Tehran
+- Led technical direction across 10+ production applications and multiple engineering teams, influencing architecture, technology decisions, and engineering standards across frontend and backend systems with React, Vue, Node.js, TypeScript, and NX.
+- Led and mentored a team of 5+ engineers while acting as a technical leader, driving architectural decisions, code reviews, and engineering practices that improved team autonomy and delivery consistency by ~25%.
+- Owned the architecture and delivery of multiple B2B and B2C products, turning complex business requirements into scalable platforms and workflows.
+- Built and standardized shared frontend and backend foundations, including design systems, reusable libraries, and Node.js services, increasing code reuse by ~40%.
+- Modernized legacy applications and introduced scalable engineering practices, reducing UI-related defects by ~30%, improving application performance by ~25%, and accelerating feature delivery by ~20-25%.
+- Worked closely with Product, Design, QA, Backend, and company leadership to shape technical roadmaps and drive high-impact initiatives through production delivery.
+
+Frontend Developer — Apollo · Aug 2020 – Jul 2021 · Estonia (Remote)
+- Built 3 applications with Vue/Nuxt in the cryptocurrency and e-commerce domain, including public-facing platforms and admin panels.
+- Worked closely with designers and backend engineers to deliver performant, user-centric interfaces under tight timelines.
+- Built real-time analytics and reporting dashboards, enabling operational visibility and faster data-driven decision-making.
+- Improved application scalability through reusable architecture patterns, modular component design, and optimized data flows.
+
+Frontend Developer — TMBA · May 2019 – Aug 2020 · Tehran
+- Delivered multiple client-facing e-commerce websites with a strong focus on clean UI and performance.
+- Improved internal admin tools through UI refactoring, reducing complexity and improving usability.
+
+Skills
+Frontend Development: TypeScript, JavaScript, React.js, Next.js, Vue.js, Nuxt.js, HTML, CSS, Accessibility, Core Web Vitals
+Architecture & Engineering: Micro-Frontends, System Design, REST APIs, GraphQL, gRPC, WebSocket, SignalR, MQTT
+Testing & Quality: Jest, Vitest, Cypress, Playwright, SonarQube, Bugsnag
+AI & Automation: Claude Code, Cursor, GitHub Copilot, AI-assisted development, n8n, AI workflow automation
+DevOps & Infrastructure: GitLab CI/CD, GitHub Actions, Docker, AWS, S3, Linux, Nexus, ArgoCD
+Backend & Integration: Node.js, Express.js, NestJS, MongoDB, MySQL, PostgreSQL, Prisma
+Build & Tooling: Git, Vite, Webpack, Rollup, Rolldown, NX, Turborepo, Sentry, Mapbox, Figma
+
+Education
+Bachelor of Computer Engineering — Azad University · 2018 – 2023
+""".strip()
+
 CANDIDATE = {
-    "name": "Candidate",
+    "name": "Matin Shamsaei",
     "current_title": "Senior Software Engineer",
     "years_experience": 7,
-    "skills": [
-        "React",
-        "Next.js",
-        "Vue",
-        "Nuxt",
-        "TypeScript",
-        "JavaScript",
-        "Tailwind",
-        "MUI",
-        "Vuetify",
-        "Node.js",
-        "Express",
-        "NestJS",
-        "Docker",
-        "GitHub Actions",
-        "GitLab CI",
-        "Vite",
-        "NX",
-        "NPM",
-        "Nexus",
-        "MinIO",
-        "PostgreSQL",
-        "MongoDB",
-        "MySQL",
-        "Redis",
-        "REST",
-        "GraphQL",
-        "WebSockets",
-        "MQTT",
-        "Swagger",
-        "Service Workers",
-        "PWA",
-        "Firebase",
-        "SignalR",
-        "Sentry",
-    ],
+    "skills": sorted(set(SOFTWARE_ENGINEER_SKILLS + FRONTEND_ENGINEER_SKILLS)),
     "target_roles": [
         "Senior Software Engineer",
         "Senior Full Stack Engineer",
         "Senior Frontend Engineer",
         "Staff Software Engineer",
         "Tech Lead",
+        "Frontend Team Lead",
     ],
     "target_countries": ["AE", "DE", "NL", "IE", "SA", "SE", "DK", "FI", "NO", "EE", "PT", "CA"],
     "preferred_countries": ["AE", "DE", "NL", "IE", "SA", "SE", "DK", "FI", "NO", "EE", "PT", "CA"],
     "visa_required": True,
     "relocation_required": True,
-    "english_level": "professional",
+    "english_level": "fluent",
     "salary_preferences": {},
     "additional_preferences": {
         "requires_sponsorship": True,
         "nationality": "IR",
+        "location": "Istanbul",
+        "email": "matinshamsaei.gh@gmail.com",
+        "portfolio": "https://matinshamsaei.com",
     },
 }
 
@@ -64,59 +247,22 @@ RESUMES = [
         "variant": ResumeVariant.SENIOR_SOFTWARE_ENGINEER.value,
         "title": "Senior Software Engineer",
         "is_default": True,
-        "skills": CANDIDATE["skills"],
-        "content": (
-            "Senior Software Engineer with 7+ years building production web applications. "
-            "Works across frontend (React, Next.js, Vue, Nuxt, TypeScript) and backend "
-            "(Node.js, Express, NestJS) with PostgreSQL, MongoDB, MySQL, Redis, Docker, and CI/CD. "
-            "Requires visa sponsorship and relocation support. "
-            "Target countries: UAE, Germany, Netherlands, Ireland, Saudi Arabia, Sweden, "
-            "Denmark, Finland, Norway, Estonia, Portugal, Canada."
-        ),
+        "skills": SOFTWARE_ENGINEER_SKILLS,
+        "content": SOFTWARE_ENGINEER_RESUME,
     },
     {
         "variant": ResumeVariant.SENIOR_FRONTEND_ENGINEER.value,
         "title": "Senior Frontend Engineer",
         "is_default": False,
-        "skills": [
-            "React",
-            "Next.js",
-            "Vue",
-            "Nuxt",
-            "TypeScript",
-            "JavaScript",
-            "Tailwind",
-            "MUI",
-            "Vuetify",
-            "PWA",
-            "Service Workers",
-        ],
-        "content": (
-            "Senior Frontend Engineer with 7+ years delivering production UIs in React, Next.js, "
-            "Vue, and Nuxt, with TypeScript, Tailwind, MUI, and Vuetify. Comfortable with PWAs, "
-            "service workers, and consuming REST/GraphQL APIs. Requires visa sponsorship and relocation."
-        ),
+        "skills": FRONTEND_ENGINEER_SKILLS,
+        "content": FRONTEND_ENGINEER_RESUME,
     },
     {
         "variant": ResumeVariant.FULL_STACK_ENGINEER.value,
         "title": "Senior Full Stack Engineer",
         "is_default": False,
-        "skills": [
-            "React",
-            "Next.js",
-            "TypeScript",
-            "Node.js",
-            "NestJS",
-            "Express",
-            "PostgreSQL",
-            "Redis",
-            "Docker",
-        ],
-        "content": (
-            "Senior Full Stack Engineer with 7+ years spanning React/Next.js frontends and "
-            "Node.js/NestJS/Express backends, PostgreSQL/Redis, and Docker-based delivery. "
-            "Requires visa sponsorship and relocation support."
-        ),
+        "skills": SOFTWARE_ENGINEER_SKILLS,
+        "content": SOFTWARE_ENGINEER_RESUME,
     },
 ]
 
