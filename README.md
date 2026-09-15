@@ -52,7 +52,7 @@ uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 Health checks:
 
 - http://localhost:8000/health/live — process is up
-- http://localhost:8000/health/ready — PostgreSQL + Redis
+- http://localhost:8000/health/ready — PostgreSQL (Redis only if `REDIS_URL` is set)
 - http://localhost:8000/health — combined status
 - http://localhost:8000/docs — OpenAPI
 
@@ -81,6 +81,17 @@ PostgreSQL connection (local Compose defaults). Host port `5434` avoids clashing
 ```
 postgresql+asyncpg://jobagent:jobagent@localhost:5434/jobagent
 ```
+
+A raw `postgres://` / `postgresql://` URI from Supabase also works; settings convert it to `postgresql+asyncpg://`, enable SSL for `*.supabase.co` / `*.supabase.com`, and disable prepared statements on the transaction pooler (port `6543`).
+
+Prefer the **session** pooler (port `5432`) or the direct `db.<ref>.supabase.co` host for Alembic. Apply production migrations with `DATABASE_URL` pointing at Supabase:
+
+```powershell
+cd backend
+uv run alembic upgrade head
+```
+
+Or dispatch `.github/workflows/migrate.yml` after setting the `DATABASE_URL` GitHub Actions secret.
 
 Target companies are upserted from `backend/app/db/data/target_companies.json` (Europe/MENA 2026 research list). Re-seed after changing that file, or on the next `run-once` (seed always upserts):
 
@@ -115,7 +126,7 @@ If a company has no `sources` array, one `primary` source is derived from the le
 
 ## Redis
 
-Used in Phase 1 for the readiness check. Later: Dramatiq broker/queue and cache.
+Optional. Locally it is used for the readiness check and later Dramatiq. On Vercel, omit `REDIS_URL`; `/health/ready` then only requires Postgres.
 
 Host port `6380` avoids clashing with other local Redis instances. Inside Compose the service still listens on `6379`.
 
@@ -129,8 +140,8 @@ Copy `.env.example` to `.env`. Never commit `.env`.
 
 | Variable | Purpose |
 |---|---|
-| `DATABASE_URL` | SQLAlchemy async PostgreSQL URL |
-| `REDIS_URL` | Redis URL |
+| `DATABASE_URL` | SQLAlchemy/libpq PostgreSQL URL (asyncpg; Supabase URIs accepted) |
+| `REDIS_URL` | Redis URL (optional) |
 | `OPENAI_API_KEY` | Job analysis and on-demand cover letters |
 | `OPENAI_MODEL` | OpenAI model, default `gpt-4o-mini` |
 | `TELEGRAM_BOT_TOKEN` | Telegram bot token |
@@ -235,6 +246,24 @@ uv run python -m app.jobs coverage
 
 The one-shot command above is the local end-to-end path. Dramatiq/APScheduler are not required to discover and notify.
 
+## Production (Vercel + Supabase)
+
+The API deploys from the repo root as FastAPI on Vercel (`api/index.py` / `backend.app.main:app`). Python 3.13. Set at least:
+
+- `DATABASE_URL` — Supabase URI (session pooler or direct)
+- `APP_ENV=production`
+- `LOG_JSON=true`
+
+Redis, OpenAI, and Telegram are not required for health checks.
+
+```powershell
+vercel link
+vercel env add DATABASE_URL
+vercel --prod
+```
+
+GitHub Actions: `.github/workflows/test.yml` on push; `.github/workflows/migrate.yml` is manual.
+
 ## Frontend
 
 Not started in Phase 1. Next.js dashboard is Phase 6.
@@ -264,9 +293,10 @@ uv run pytest -m integration
 ## Project layout
 
 ```
+api/index.py     Vercel FastAPI entrypoint
 backend/app/     FastAPI application
 backend/alembic/  migrations
-frontend/        Next.js dashboard (Phase 6+)
+frontend/        Next.js dashboard (later)
 tests/           pytest suite
 scripts/         operational scripts
 ```

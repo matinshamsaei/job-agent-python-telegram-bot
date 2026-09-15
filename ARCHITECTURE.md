@@ -6,7 +6,7 @@ This is a **single-user modular monolith**. It discovers software engineering jo
 
 ## Current repository state
 
-Greenfield through one-shot discovery: models, a multi-adapter collector registry (Greenhouse, Lever, Personio, Ashby, SmartRecruiters, Workable, Recruitee, Teamtailor, Workday), scoring, Telegram notifications, and `python -m app.jobs run-once`. Dashboard, Dramatiq, and learning are still later phases.
+Greenfield through one-shot discovery: models, a multi-adapter collector registry (Greenhouse, Lever, Personio, Ashby, SmartRecruiters, Workable, Recruitee, Teamtailor, Workday), scoring, Telegram notifications, and `python -m app.jobs run-once`. Production hosting is Vercel (FastAPI) + Supabase Postgres + GitHub Actions (collector, later). Dashboard, Dramatiq, and learning are still later phases.
 
 ## Success metrics
 
@@ -215,6 +215,20 @@ Docker Compose:  PostgreSQL 16  +  Redis 8
 Host (or api container):  FastAPI / uvicorn
 Alembic:  migration runner (no domain tables until Phase 2)
 ```
+
+## Production runtime
+
+```
+GitHub
+  ├── Vercel → FastAPI (health, later webhook/API)
+  └── GitHub Actions → scheduled collector (later)
+           ↓
+     Supabase PostgreSQL
+           ↓
+        Telegram
+```
+
+Redis is optional in production. The API is a single Vercel Function (`app.py`) on Fluid compute. Collectors stay off Vercel; they will run on GitHub Actions.
 
 Default host ports (chosen to avoid common local clashes):
 
