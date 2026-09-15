@@ -3,6 +3,9 @@
 .env.local
 *.pem
 
+# Vercel
+.vercel/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -46,3 +49,5 @@ logs/
 data/
 !backend/app/db/data/
 !backend/app/db/data/**
+.vercel
+.env*
