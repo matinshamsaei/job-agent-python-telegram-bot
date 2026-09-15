@@ -9,6 +9,7 @@ from sqlalchemy.ext.asyncio import (
 )
 
 from app.core.config import Settings
+from app.db.engine import engine_kwargs
 
 engine: AsyncEngine | None = None
 SessionLocal: async_sessionmaker[AsyncSession] | None = None
@@ -16,12 +17,7 @@ SessionLocal: async_sessionmaker[AsyncSession] | None = None
 
 def init_engine(settings: Settings) -> async_sessionmaker[AsyncSession]:
     global engine, SessionLocal
-    engine = create_async_engine(
-        settings.database_url_str,
-        pool_pre_ping=True,
-        pool_size=5,
-        max_overflow=5,
-    )
+    engine = create_async_engine(settings.database_url_str, **engine_kwargs(settings))
     SessionLocal = async_sessionmaker(
         engine,
         class_=AsyncSession,
