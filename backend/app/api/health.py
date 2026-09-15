@@ -25,6 +25,12 @@ async def _run_check(
         return "error", str(exc)
 
 
+def _database_error_message(exc: Exception) -> str:
+    settings = get_settings()
+    target = settings.database_target
+    return f"{exc} (host={target.host} port={target.port})"
+
+
 @router.get("/health/live", response_model=HealthResponse)
 async def live() -> HealthResponse:
     settings = get_settings()
@@ -41,8 +47,16 @@ async def live() -> HealthResponse:
 @router.get("/health", response_model=HealthResponse)
 async def ready(response: Response) -> HealthResponse:
     settings = get_settings()
-    db_status, db_error = await _run_check("database", check_database)
-    redis_status, redis_error = await _run_check("redis", check_redis)
+    try:
+        await check_database()
+        db_status, db_error = "ok", None
+    except Exception as exc:
+        logger.warning("health_check_failed", check="database", error=str(exc))
+        db_status, db_error = "error", _database_error_message(exc)
+    if settings.redis_configured:
+        redis_status, redis_error = await _run_check("redis", check_redis)
+    else:
+        redis_status, redis_error = "skipped", None
 
     errors: dict[str, str] = {}
     if db_error:
@@ -50,7 +64,7 @@ async def ready(response: Response) -> HealthResponse:
     if redis_error:
         errors["redis"] = redis_error
 
-    overall = "ok" if db_status == "ok" and redis_status == "ok" else "degraded"
+    overall = "ok" if db_status == "ok" and redis_status != "error" else "degraded"
     if overall != "ok":
         response.status_code = 503
 

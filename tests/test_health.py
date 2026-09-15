@@ -16,7 +16,7 @@ def test_live_health_does_not_require_infrastructure() -> None:
     assert body["checks"]["redis"] == "skipped"
 
 
-def test_ready_health_is_degraded_without_infrastructure() -> None:
+def test_ready_health_is_degraded_without_database() -> None:
     client = TestClient(create_app(with_lifespan=False))
     response = client.get("/health/ready")
 
@@ -24,9 +24,7 @@ def test_ready_health_is_degraded_without_infrastructure() -> None:
     body = response.json()
     assert body["status"] == "degraded"
     assert body["checks"]["database"] == "error"
-    assert body["checks"]["redis"] == "error"
     assert "database" in body["errors"]
-    assert "redis" in body["errors"]
 
 
 def test_combined_health_matches_readiness() -> None:
