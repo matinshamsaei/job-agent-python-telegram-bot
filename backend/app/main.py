@@ -21,7 +21,8 @@ async def lifespan(_app: FastAPI) -> AsyncIterator[None]:
     settings = get_settings()
     configure_logging(settings)
     init_engine(settings)
-    await init_redis(settings)
+    if settings.redis_configured:
+        await init_redis(settings)
     logger.info(
         "application_started",
         service=settings.app_name,
@@ -50,7 +51,7 @@ def create_app(
     )
     application.add_middleware(
         CORSMiddleware,
-        allow_origins=resolved.cors_origins,
+        allow_origins=resolved.cors_origin_list,
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
