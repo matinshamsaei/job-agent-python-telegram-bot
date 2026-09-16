@@ -145,7 +145,9 @@ Copy `.env.example` to `.env`. Never commit `.env`.
 | `OPENAI_API_KEY` | Job analysis and on-demand cover letters |
 | `OPENAI_MODEL` | OpenAI model, default `gpt-4o-mini` |
 | `TELEGRAM_BOT_TOKEN` | Telegram bot token |
-| `TELEGRAM_CHAT_ID` | Destination chat for job alerts |
+| `TELEGRAM_CHAT_ID` | Telegram chat that receives job cards |
+| `TELEGRAM_WEBHOOK_SECRET` | Shared secret Telegram sends as `X-Telegram-Bot-Api-Secret-Token` |
+| `PUBLIC_BASE_URL` | Public HTTPS origin for `python -m app.notifications.webhook set` |
 | `SCORE_NOTIFY_THRESHOLD` | Minimum score for Telegram (default 80) |
 | `APP_ENV` | `development` / `production` |
 | `LOG_LEVEL` | `DEBUG`, `INFO`, `WARNING`, `ERROR` |
@@ -166,11 +168,20 @@ Equivalent:
 uv run python -m app.jobs.run_once --limit 10
 ```
 
-To handle APPLY / SKIP / REJECT / GENERATE COVER LETTER buttons:
+To handle APPLY / SKIP / REJECT / GENERATE COVER LETTER buttons in production, Telegram calls `POST /telegram/webhook`. Register it once (stop the polling bot first):
+
+```powershell
+cd backend
+uv run python -m app.notifications.webhook set --url https://your-app.vercel.app
+```
+
+Locally you can still poll:
 
 ```powershell
 uv run python -m app.notifications.bot
 ```
+
+Do not run polling and the webhook at the same time.
 
 ## Which ATS platforms are collected
 
@@ -253,6 +264,8 @@ The API deploys from the repo root as FastAPI on Vercel (`api/index.py` / `backe
 - `DATABASE_URL` — Supabase URI (session pooler or direct)
 - `APP_ENV=production`
 - `LOG_JSON=true`
+- `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`, `TELEGRAM_WEBHOOK_SECRET` — for job buttons
+- `PUBLIC_BASE_URL` — production origin, used to register the webhook
 
 Redis, OpenAI, and Telegram are not required for health checks.
 

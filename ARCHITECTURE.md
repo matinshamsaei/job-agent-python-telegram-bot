@@ -220,7 +220,7 @@ Alembic:  migration runner (no domain tables until Phase 2)
 
 ```
 GitHub
-  ├── Vercel → FastAPI (health, later webhook/API)
+  ├── Vercel → FastAPI (health, Telegram webhook)
   └── GitHub Actions → scheduled collector (later)
            ↓
      Supabase PostgreSQL
@@ -228,7 +228,7 @@ GitHub
         Telegram
 ```
 
-Redis is optional in production. The API is a single Vercel Function (`app.py`) on Fluid compute. Collectors stay off Vercel; they will run on GitHub Actions.
+Redis is optional in production. The API is a single Vercel Function (`api/index.py`) on Fluid compute. Telegram buttons hit `POST /telegram/webhook` with `X-Telegram-Bot-Api-Secret-Token`. Collectors stay off Vercel; they will run on GitHub Actions.
 
 Default host ports (chosen to avoid common local clashes):
 
