@@ -47,3 +47,4 @@ def test_reserved_secrets_default_empty() -> None:
     assert settings.openai_api_key == ""
     assert settings.telegram_bot_token == ""
     assert settings.telegram_chat_id == ""
+    assert settings.telegram_webhook_secret == ""

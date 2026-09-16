@@ -44,6 +44,8 @@ class Settings(BaseSettings):
     openai_model: str = "gpt-4o-mini"
     telegram_bot_token: str = ""
     telegram_chat_id: str = ""
+    telegram_webhook_secret: str = ""
+    public_base_url: str = ""
     score_notify_threshold: int = 80
     score_apply_threshold: int = 80
     score_review_threshold: int = 60
