@@ -7,6 +7,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.health import LIVE_PATHS
+from app.api.telegram import WEBHOOK_PATH
 from app.api.router import api_router
 from app.core.config import Settings, get_settings
 from app.core.logging import configure_logging
@@ -59,7 +60,11 @@ def create_app(
 
     @application.middleware("http")
     async def log_requests(request: Request, call_next):
-        if request.url.path in LIVE_PATHS or request.url.path in {"/health", "/health/ready"}:
+        if request.url.path in LIVE_PATHS or request.url.path in {
+            "/health",
+            "/health/ready",
+            WEBHOOK_PATH,
+        }:
             return await call_next(request)
         start = time.perf_counter()
         response = await call_next(request)
