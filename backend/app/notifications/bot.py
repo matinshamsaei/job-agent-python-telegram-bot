@@ -23,6 +23,18 @@ from app.models import (
 logger = structlog.get_logger(__name__)
 
 
+async def process_update(settings: Settings, client: httpx.AsyncClient, update: dict) -> None:
+    callback = update.get("callback_query")
+    if not callback:
+        return
+    chat_id = str(((callback.get("message") or {}).get("chat") or {}).get("id") or "")
+    expected = str(settings.telegram_chat_id or "")
+    if expected and chat_id and chat_id != expected:
+        logger.warning("telegram_ignored_foreign_chat")
+        return
+    await handle_callback(settings, client, callback)
+
+
 async def handle_callback(settings: Settings, client: httpx.AsyncClient, callback: dict) -> None:
     data = callback.get("data") or ""
     callback_id = callback.get("id")
@@ -102,9 +114,7 @@ async def poll_forever() -> None:
                 response.raise_for_status()
                 for update in response.json().get("result", []):
                     offset = update["update_id"] + 1
-                    callback = update.get("callback_query")
-                    if callback:
-                        await handle_callback(settings, client, callback)
+                    await process_update(settings, client, update)
     finally:
         await dispose_engine()
 
