@@ -61,6 +61,7 @@ class WorkdayCollector:
         endpoint, base = self._endpoint(target)
         jobs: list[RawJob] = []
         offset = 0
+        total = 0
         for _ in range(MAX_PAGES):
             response = await self.client.post(
                 endpoint,
@@ -84,7 +85,9 @@ class WorkdayCollector:
                     )
                 )
             offset += len(postings)
-            if not postings or offset >= int(payload.get("total") or 0):
+            # Workday only reports `total` on the first page; later pages say 0.
+            total = max(total, int(payload.get("total") or 0))
+            if not postings or offset >= total:
                 break
         logger.info("workday_collected", company=target.company_slug, count=len(jobs))
         return jobs

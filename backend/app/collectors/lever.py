@@ -10,6 +10,9 @@ from app.core.enums import AtsType, CollectionStrategy
 
 logger = structlog.get_logger(__name__)
 
+GLOBAL_API = "https://api.lever.co/v0/postings"
+EU_API = "https://api.eu.lever.co/v0/postings"
+
 
 class LeverCollector:
     name = "lever"
@@ -25,10 +28,13 @@ class LeverCollector:
             return target.feed_url
         if not target.board_token:
             raise MissingTokenError("lever requires a site token")
-        return f"https://api.lever.co/v0/postings/{target.board_token}"
+        return f"{GLOBAL_API}/{target.board_token}"
 
     async def collect(self, target: CollectorTarget) -> list[RawJob]:
         response = await self.client.get(self.feed_url(target), params={"mode": "json"})
+        if response.status_code == 404 and not target.feed_url and target.board_token:
+            # EU-hosted Lever accounts only exist on the EU API.
+            response = await self.client.get(f"{EU_API}/{target.board_token}", params={"mode": "json"})
         response.raise_for_status()
         payload = response.json()
         jobs: list[RawJob] = []
@@ -37,6 +43,11 @@ class LeverCollector:
             location = categories.get("location") or item.get("country")
             html = item.get("description") or ""
             plain = item.get("descriptionPlain") or html_to_text(html)
+            lists = "\n".join(
+                f"{block.get('text') or ''}: {html_to_text(block.get('content') or '')}"
+                for block in item.get("lists") or []
+            )
+            additional = item.get("additionalPlain") or html_to_text(item.get("additional") or "")
             created = item.get("createdAt")
             posted_at = None
             if isinstance(created, (int, float)):
@@ -48,11 +59,11 @@ class LeverCollector:
                     title=item.get("text") or "",
                     url=item.get("hostedUrl") or item.get("applyUrl") or "",
                     location=location,
-                    description=plain,
+                    description="\n\n".join(part for part in (plain, lists, additional) if part),
                     description_html=html,
                     employment_type=categories.get("commitment"),
                     posted_at=posted_at,
-                    extra={"team": categories.get("team")},
+                    extra={"team": categories.get("team"), "workplace_type": item.get("workplaceType")},
                 )
             )
         logger.info("lever_collected", company=target.company_slug, count=len(jobs))

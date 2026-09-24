@@ -20,8 +20,31 @@ logger = structlog.get_logger(__name__)
 PARSE_ERRORS = (ET.ParseError, json.JSONDecodeError, ValueError, KeyError, TypeError)
 
 
+def is_edge_block(response: httpx.Response) -> bool:
+    """A CDN/WAF challenge page, not a feed asking for credentials."""
+    if response.status_code not in {403, 429, 503}:
+        return False
+    server = response.headers.get("server", "").lower()
+    if "cloudflare" not in server and "cf-ray" not in response.headers and "akamai" not in server:
+        return False
+    try:
+        body = response.text[:4000].lower()
+    except (httpx.ResponseNotRead, UnicodeDecodeError):
+        return True
+    return any(
+        marker in body
+        for marker in ("attention required", "cf-chl", "cloudflare", "access denied", "just a moment")
+    ) or not body
+
+
 def classify_http_error(error: httpx.HTTPStatusError) -> tuple[CollectionStatus, str]:
     status = error.response.status_code
+    if is_edge_block(error.response):
+        return (
+            CollectionStatus.BLOCKED,
+            f"HTTP {status}: CDN firewall blocked this network (IP or region); "
+            "retry from another network or a CI runner",
+        )
     if status in {401, 403}:
         return CollectionStatus.AUTH_REQUIRED, f"HTTP {status}: feed requires credentials"
     if status == 429:

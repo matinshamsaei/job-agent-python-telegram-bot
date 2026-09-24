@@ -1,4 +1,5 @@
 from datetime import datetime
+from html import unescape
 
 import httpx
 import structlog
@@ -44,7 +45,8 @@ class GreenhouseCollector:
         return f"https://boards-api.greenhouse.io/v1/boards/{target.board_token}/jobs"
 
     async def collect(self, target: CollectorTarget) -> list[RawJob]:
-        response = await self.client.get(self.feed_url(target))
+        # content=true inlines descriptions, so stack filters run before a job is selected.
+        response = await self.client.get(self.feed_url(target), params={"content": "true"})
         response.raise_for_status()
         payload = response.json()
         jobs: list[RawJob] = []
@@ -52,6 +54,7 @@ class GreenhouseCollector:
             location = None
             if isinstance(item.get("location"), dict):
                 location = item["location"].get("name")
+            html = unescape(item.get("content") or "")
             jobs.append(
                 RawJob(
                     source=self.name,
@@ -59,6 +62,8 @@ class GreenhouseCollector:
                     title=item.get("title") or "",
                     url=item.get("absolute_url") or "",
                     location=location,
+                    description=html_to_text(html),
+                    description_html=html,
                     posted_at=parse_dt(item.get("updated_at") or item.get("first_published")),
                     extra={"company_name": item.get("company_name")},
                 )
@@ -76,7 +81,8 @@ class GreenhouseCollector:
         response = await self.client.get(url)
         response.raise_for_status()
         item = response.json()
-        html = item.get("content") or ""
+        # Greenhouse returns entity-escaped HTML ("&lt;p&gt;").
+        html = unescape(item.get("content") or "")
         raw.description_html = html
         raw.description = html_to_text(html)
         if isinstance(item.get("location"), dict) and item["location"].get("name"):

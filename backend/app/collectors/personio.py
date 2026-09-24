@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+from urllib.parse import urlparse
 
 import httpx
 import structlog
@@ -28,8 +29,10 @@ class PersonioXmlCollector:
         return f"https://{target.board_token}.jobs.personio.de/xml?language=en"
 
     async def collect(self, target: CollectorTarget) -> list[RawJob]:
-        base = f"https://{target.board_token}.jobs.personio.de"
-        response = await self.client.get(self.feed_url(target))
+        feed = self.feed_url(target)
+        parsed = urlparse(feed)
+        base = f"{parsed.scheme}://{parsed.netloc}"
+        response = await self.client.get(feed)
         response.raise_for_status()
         root = ET.fromstring(response.text)
         jobs: list[RawJob] = []
