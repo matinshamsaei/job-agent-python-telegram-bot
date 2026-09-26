@@ -64,6 +64,117 @@ COUNTRY_NAMES: dict[str, str] = {
     "bengaluru": "IN",
     "france": "FR",
     "paris": "FR",
+    "poland": "PL",
+    "warsaw": "PL",
+    "krakow": "PL",
+    "kraków": "PL",
+    "greece": "GR",
+    "athens": "GR",
+    "italy": "IT",
+    "milan": "IT",
+    "belgium": "BE",
+    "brussels": "BE",
+    "austria": "AT",
+    "vienna": "AT",
+    "switzerland": "CH",
+    "zurich": "CH",
+    "zürich": "CH",
+    "czech republic": "CZ",
+    "czechia": "CZ",
+    "prague": "CZ",
+    "romania": "RO",
+    "bucharest": "RO",
+    "bulgaria": "BG",
+    "sofia": "BG",
+    "serbia": "RS",
+    "belgrade": "RS",
+    "ukraine": "UA",
+    "lithuania": "LT",
+    "vilnius": "LT",
+    "latvia": "LV",
+    "riga": "LV",
+    "hungary": "HU",
+    "budapest": "HU",
+    "croatia": "HR",
+    "turkey": "TR",
+    "türkiye": "TR",
+    "istanbul": "TR",
+    "israel": "IL",
+    "tel aviv": "IL",
+    "egypt": "EG",
+    "cairo": "EG",
+    "qatar": "QA",
+    "doha": "QA",
+    "bahrain": "BH",
+    "kuwait": "KW",
+    "oman": "OM",
+    "jordan": "JO",
+    "pakistan": "PK",
+    "karachi": "PK",
+    "lahore": "PK",
+    "singapore": "SG",
+    "hong kong": "HK",
+    "japan": "JP",
+    "tokyo": "JP",
+    "china": "CN",
+    "shanghai": "CN",
+    "beijing": "CN",
+    "taiwan": "TW",
+    "south korea": "KR",
+    "korea": "KR",
+    "seoul": "KR",
+    "australia": "AU",
+    "sydney": "AU",
+    "melbourne": "AU",
+    "new zealand": "NZ",
+    "philippines": "PH",
+    "vietnam": "VN",
+    "indonesia": "ID",
+    "jakarta": "ID",
+    "malaysia": "MY",
+    "kuala lumpur": "MY",
+    "thailand": "TH",
+    "bangkok": "TH",
+    "hyderabad": "IN",
+    "pune": "IN",
+    "mumbai": "IN",
+    "south africa": "ZA",
+    "nigeria": "NG",
+    "kenya": "KE",
+    "brazil": "BR",
+    "são paulo": "BR",
+    "sao paulo": "BR",
+    "mexico": "MX",
+    "argentina": "AR",
+    "colombia": "CO",
+    "chile": "CL",
+    "england": "GB",
+    "manchester": "GB",
+    "edinburgh": "GB",
+    "seattle": "US",
+    "mountain view": "US",
+    "sunnyvale": "US",
+    "san jose": "US",
+    "los angeles": "US",
+    "austin": "US",
+    "boston": "US",
+    "chicago": "US",
+    "denver": "US",
+    "atlanta": "US",
+    "washington": "US",
+    "california": "US",
+    "texas": "US",
+    "massachusetts": "US",
+    "colorado": "US",
+    "montreal": "CA",
+    "ottawa": "CA",
+    "calgary": "CA",
+    # Region-only locations: not a target country, so never "reachable" by default.
+    "asia": "ASIA",
+    "apac": "APAC",
+    "latam": "LATAM",
+    "north america": "NA",
+    "americas": "AMER",
 }
 
 CITY_TO_COUNTRY = {
@@ -97,6 +208,7 @@ class ParsedLocation:
     country: str | None
     city: str | None
     remote_hint: bool
+    countries: tuple[str, ...] = ()
 
 
 def parse_location(value: str | None) -> ParsedLocation:
@@ -106,12 +218,14 @@ def parse_location(value: str | None) -> ParsedLocation:
     if not raw:
         return ParsedLocation(raw="", country=None, city=None, remote_hint=remote_hint)
 
-    country = None
     city = None
+    found: list[tuple[int, str]] = []
     for name, code in COUNTRY_NAMES.items():
-        if re.search(rf"\b{re.escape(name)}\b", lowered):
-            country = code
-            break
+        match = re.search(rf"\b{re.escape(name)}\b", lowered)
+        if match:
+            found.append((match.start(), code))
+    countries = tuple(dict.fromkeys(code for _position, code in sorted(found)))
+    country = countries[0] if countries else None
     for name, code in CITY_TO_COUNTRY.items():
         if re.search(rf"\b{re.escape(name)}\b", lowered):
             city = name.title()
@@ -121,4 +235,10 @@ def parse_location(value: str | None) -> ParsedLocation:
     parts = [part.strip() for part in re.split(r"[,/|]", raw) if part.strip()]
     if parts and city is None:
         city = parts[0]
-    return ParsedLocation(raw=raw, country=country, city=city, remote_hint=remote_hint)
+    return ParsedLocation(
+        raw=raw,
+        country=country,
+        city=city,
+        remote_hint=remote_hint,
+        countries=countries or ((country,) if country else ()),
+    )
