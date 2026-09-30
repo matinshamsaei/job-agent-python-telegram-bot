@@ -31,6 +31,7 @@ SOFTWARE_ENGINEER_SKILLS = [
     "REST",
     "gRPC",
     "Docker",
+    "CI/CD",
     "Terraform",
     "OpenTelemetry",
     "Grafana",

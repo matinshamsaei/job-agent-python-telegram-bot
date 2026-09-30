@@ -65,7 +65,7 @@ def analyze_deterministically(
         positives.extend(claim.value.replace("_", " ") for claim in visa.claims if "no_" not in claim.value)
     return AnalysisResult(
         role_category=match.role_category,
-        seniority=infer_seniority(title, description),
+        seniority=infer_seniority(title, description, years),
         years_required=years,
         required_skills=skills,
         preferred_skills=[],
@@ -104,8 +104,14 @@ def merge_llm(base: AnalysisResult, llm: LLMJobAnalysis, job_text: str) -> Analy
     return base
 
 
+YEARS_OF_EXPERIENCE = re.compile(
+    r"(\d{1,2})\s*(?:\+|plus)?\s*(?:(?:-|–|to)\s*\d{1,2}\s*)?\+?\s*years?['’]?\s+"
+    r"(?:of\s+)?(?:(?!years?\b)[a-z][\w/+#-]*(?:\.[\w/+#-]+)*,?\s+){0,5}?(?:experience|exp\b)",
+    re.I,
+)
+
+
 def _years_required(text: str) -> int | None:
-    match = re.search(r"(\d+)\+?\s*\+?\s*years", text, re.I)
-    if not match:
-        return None
-    return int(match.group(1))
+    """Only "N years ... experience" counts; "founded 20 years ago" does not."""
+    years = [int(value) for value in YEARS_OF_EXPERIENCE.findall(text) if 1 <= int(value) <= 15]
+    return max(years) if years else None

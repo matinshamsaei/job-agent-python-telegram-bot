@@ -140,6 +140,9 @@ def combine_visa_status(
         if confidence < 0.25:
             continue
         if claim == EvidenceClaim.NO_SPONSORSHIP.value:
+            # One posting's "no sponsorship" is about that role, not the company.
+            if _type == EvidenceType.JOB_POSTING.value:
+                continue
             return VisaStatus.NO
         if claim == EvidenceClaim.SPONSORSHIP_AVAILABLE.value:
             return VisaStatus.CONFIRMED if confidence >= 0.6 else VisaStatus.LIKELY

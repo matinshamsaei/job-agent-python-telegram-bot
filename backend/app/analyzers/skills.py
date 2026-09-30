@@ -46,6 +46,7 @@ ECOSYSTEMS: dict[str, list[str]] = {
         "github actions",
         "gitlab ci",
         "ci/cd",
+        "kubernetes",
         "vite",
         "nx",
         "turborepo",
@@ -61,7 +62,9 @@ ECOSYSTEMS: dict[str, list[str]] = {
         "n8n",
     ],
     "api": [
-        "rest",
+        "rest api",
+        "rest apis",
+        "restful",
         "graphql",
         "websocket",
         "websockets",
@@ -71,6 +74,22 @@ ECOSYSTEMS: dict[str, list[str]] = {
         "sentry",
     ],
     "testing": ["jest", "vitest", "cypress", "playwright", "pytest", "sonarqube", "bugsnag"],
+    # Stacks outside the candidate profile; extracted so they count as missing.
+    "other_backend": [
+        "java",
+        "kotlin",
+        "scala",
+        "golang",
+        ".net",
+        "c#",
+        "php",
+        "ruby",
+        "rails",
+        "c++",
+        "rust",
+        "elixir",
+        "spring boot",
+    ],
 }
 
 CANONICAL = {
@@ -95,6 +114,28 @@ CANONICAL = {
     "kafka": "Kafka",
     "django": "Django",
     "python": "Python",
+    "rest api": "REST",
+    "rest apis": "REST",
+    "restful": "REST",
+    "websocket": "WebSockets",
+    "websockets": "WebSockets",
+    "ci/cd": "CI/CD",
+    "github actions": "GitHub Actions",
+    "gitlab ci": "GitLab CI",
+    "kubernetes": "Kubernetes",
+    "java": "Java",
+    "kotlin": "Kotlin",
+    "golang": "Go",
+    ".net": ".NET",
+    "c#": "C#",
+    "php": "PHP",
+    "ruby": "Ruby",
+    "rails": "Rails",
+    "c++": "C++",
+    "rust": "Rust",
+    "scala": "Scala",
+    "elixir": "Elixir",
+    "spring boot": "Spring Boot",
 }
 
 
@@ -113,8 +154,9 @@ def extract_skills(text: str) -> list[str]:
     found: list[str] = []
     for skills in ECOSYSTEMS.values():
         for skill in skills:
-            if _contains_skill(blob, skill) and skill not in found:
-                found.append(CANONICAL.get(skill, skill))
+            name = CANONICAL.get(skill, skill)
+            if name not in found and _contains_skill(blob, skill):
+                found.append(name)
     return found
 
 
