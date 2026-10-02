@@ -7,9 +7,16 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.analyzers.ai import OpenAIProvider
-from app.analyzers.filters import apply_hard_filters, looks_like_target_role, target_role_rank
+from app.analyzers.filters import (
+    apply_hard_filters,
+    incompatible_stack,
+    location_is_reachable,
+    looks_like_target_role,
+    target_role_rank,
+)
 from app.analyzers.job_analysis import analyze_deterministically, merge_llm
-from app.analyzers.normalize import normalized_job_fields
+from app.analyzers.location import parse_location
+from app.analyzers.normalize import detect_remote_type, normalized_job_fields
 from app.analyzers.skills import match_skills
 from app.analyzers.visa import combine_visa_status, decayed_confidence
 from app.collectors.base import CollectorTarget, target_from
@@ -57,6 +64,7 @@ class PipelineSummary:
     highest_score: float = 0.0
     sources_attempted: int = 0
     jobs_seen: int = 0
+    already_known: int = 0
     notified_by_company: dict[str, int] = field(default_factory=dict)
     error_details: list[str] = field(default_factory=list)
     status_counts: dict[str, int] = field(default_factory=dict)
@@ -71,6 +79,7 @@ class PipelineSummary:
         print(
             f"Sources attempted: {self.sources_attempted}\n"
             f"Jobs seen on feeds: {self.jobs_seen}\n"
+            f"Already known (skipped before limit): {self.already_known}\n"
             f"Discovered: {self.discovered}\n"
             f"New: {self.new}\n"
             f"Duplicates: {self.duplicates}\n"
@@ -91,7 +100,7 @@ class PipelineSummary:
                 print(f"  {ats_type:20} {count}")
 
 
-async def run_pipeline(limit: int = 10) -> PipelineSummary:
+async def run_pipeline(limit: int = 30) -> PipelineSummary:
     settings = Settings()
     configure_logging(settings)
     if not settings.openai_api_key:
@@ -141,8 +150,9 @@ async def _execute(
     timeout = httpx.Timeout(settings.http_timeout_seconds)
     ai = OpenAIProvider(settings)
 
+    target_countries = list(profile.target_countries or [])
     async with httpx.AsyncClient(headers=headers, timeout=timeout, follow_redirects=True) as client:
-        buckets: list[list[tuple[TargetCompany, CollectorTarget, object]]] = []
+        collected: list[list[tuple[TargetCompany, CollectorTarget, object]]] = []
         for company, source in pairs:
             target = target_from(company, source)
             summary.sources_attempted += 1
@@ -154,14 +164,16 @@ async def _execute(
             matching = [
                 (company, target, raw)
                 for raw in outcome.jobs
-                if looks_like_target_role(raw.title)
+                if worth_scoring(raw, company, target_countries)
             ]
-            matching.sort(key=lambda item: target_role_rank(item[2].title))
             if matching:
-                buckets.append(matching)
+                collected.append(matching)
             if outcome.status is not CollectionStatus.ADAPTER_MISSING:
                 await _pause(settings)
 
+        known_ids, known_titles = await _known_job_keys(session, collected)
+        buckets = fresh_buckets(collected, known_ids, known_titles, target_countries)
+        summary.already_known = sum(len(bucket) for bucket in collected) - sum(len(b) for b in buckets)
         selected = select_round_robin(buckets, limit)
         summary.discovered = len(selected)
 
@@ -202,6 +214,7 @@ async def _execute(
         "errors": summary.errors,
         "sources_attempted": summary.sources_attempted,
         "jobs_seen": summary.jobs_seen,
+        "already_known": summary.already_known,
         "source_status": summary.status_counts,
         "missing_adapters": summary.missing_adapters,
     }
@@ -267,6 +280,7 @@ async def _process_job(
         employment_type=job.employment_type,
         remote_type=job.remote_type,
         role_category=analysis.role_category,
+        location=job.location,
     )
     if hard.rejected:
         summary.rejected += 1
@@ -309,6 +323,7 @@ async def _process_job(
         employment_type=job.employment_type,
         remote_type=job.remote_type,
         role_category=analysis.role_category,
+        location=job.location,
     )
     stored = await _store_analysis(session, job, analysis, used_ai=used_ai, visa_status=visa_status)
     if hard.rejected:
@@ -378,6 +393,78 @@ async def _process_job(
                 summary.notified_by_company[company.slug] = (
                     summary.notified_by_company.get(company.slug, 0) + 1
                 )
+
+
+def worth_scoring(raw, company: TargetCompany, target_countries: list[str]) -> bool:
+    """Cheap checks on list-level data so the limit is not spent on certain rejects."""
+    if not looks_like_target_role(raw.title):
+        return False
+    if raw.description and incompatible_stack(raw.title, raw.description):
+        return False
+    parsed = parse_location(raw.location)
+    return location_is_reachable(
+        country=parsed.country or company.country,
+        location=raw.location,
+        remote_type=detect_remote_type(raw.location, raw.description),
+        target_countries=target_countries,
+    )
+
+
+def _title_key(company_id, title: str) -> tuple:
+    return (company_id, " ".join(title.lower().split()))
+
+
+async def _known_job_keys(session: AsyncSession, buckets: list[list]) -> tuple[set, set]:
+    sources = {raw.source for bucket in buckets for _company, _target, raw in bucket}
+    if not sources:
+        return set(), set()
+    rows = await session.execute(
+        select(Job.source, Job.external_id, Job.company_id, Job.title).where(Job.source.in_(sources))
+    )
+    ids: set = set()
+    titles: set = set()
+    for source, external_id, company_id, title in rows.all():
+        ids.add((source, external_id))
+        titles.add(_title_key(company_id, title))
+    return ids, titles
+
+
+def fresh_buckets(
+    buckets: list[list],
+    known: set,
+    known_titles: set | None = None,
+    target_countries: list[str] | None = None,
+) -> list[list]:
+    """Drop already-seen postings before the limit is applied, then rank what is left.
+
+    Without this, every run re-selects the same top postings, they all come back
+    as duplicates, and the limit is spent before a single new job is scored.
+    A posting is "seen" if it was stored before, appears on a board shared with
+    another company, or repeats a title the company already has in another city.
+    """
+    targets = set(target_countries or [])
+    seen_ids = set(known)
+    seen_titles = set(known_titles or ())
+
+    def order(item) -> tuple[int, int]:
+        named = parse_location(item[2].location).countries
+        return (target_role_rank(item[2].title), 0 if targets.intersection(named) else 1)
+
+    fresh: list[list] = []
+    for bucket in buckets:
+        kept = []
+        for item in sorted(bucket, key=order):
+            company, raw = item[0], item[2]
+            key = (raw.source, raw.external_id)
+            title = _title_key(company.id, raw.title)
+            if key in seen_ids or title in seen_titles:
+                continue
+            seen_ids.add(key)
+            seen_titles.add(title)
+            kept.append(item)
+        if kept:
+            fresh.append(kept)
+    return fresh
 
 
 def select_round_robin(buckets: list[list], limit: int) -> list:

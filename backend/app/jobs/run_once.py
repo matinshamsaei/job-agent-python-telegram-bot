@@ -9,7 +9,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Run the job discovery pipeline once and exit. Never auto-applies."
     )
-    parser.add_argument("--limit", type=int, default=10, help="Maximum discovered jobs to process")
+    parser.add_argument("--limit", type=int, default=30, help="Maximum new jobs to process")
     return parser
 
 
