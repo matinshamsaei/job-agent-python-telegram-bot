@@ -18,6 +18,7 @@ from dataclasses import dataclass, field
 import httpx
 import structlog
 
+from app.analyzers.location import parse_location
 from app.collectors.base import CollectorTarget, MissingTokenError
 from app.collectors.known_ats import KNOWN_ATS_BY_SLUG
 from app.collectors.registry import build_collector, strategy_for
@@ -225,12 +226,31 @@ def board_matches_company(outcome_jobs: list, name: str) -> bool:
     )
 
 
+MIN_JOBS_FOR_COUNTRY_CHECK = 5
+
+
+def board_in_company_country(outcome_jobs: list, country: str | None) -> bool:
+    """Reject a guessed token whose postings are all outside the company's country.
+
+    Lever and most other feeds never echo a company name, so `dnb` (the
+    Norwegian bank) silently resolves to Dun & Bradstreet's US/India board.
+    """
+    if not country:
+        return True
+    located = [parse_location(job.location).countries for job in outcome_jobs if job.location]
+    located = [codes for codes in located if codes]
+    if len(located) < MIN_JOBS_FOR_COUNTRY_CHECK:
+        return True
+    return any(country in codes for codes in located)
+
+
 async def verify_hint(
     hint: AtsHint,
     slug: str,
     name: str,
     client: httpx.AsyncClient,
     settings: Settings,
+    country: str | None = None,
 ) -> tuple[CollectionStatus, str | None, int]:
     """Run the real adapter against a hint and report what happened."""
     target = CollectorTarget(
@@ -251,6 +271,16 @@ async def verify_hint(
         return (
             CollectionStatus.INVALID_SOURCE,
             f"board '{hint.board_token}' reports a different company name",
+            0,
+        )
+    if (
+        hint.origin == "probe"
+        and outcome.status is CollectionStatus.COLLECTED
+        and not board_in_company_country(outcome.jobs, country)
+    ):
+        return (
+            CollectionStatus.INVALID_SOURCE,
+            f"board '{hint.board_token}' has no postings in {country}; likely another company",
             0,
         )
     return outcome.status, outcome.detail, len(outcome.jobs)
@@ -279,6 +309,7 @@ async def detect_company(
     *,
     probe_guesses: bool = True,
     budget: ProbeBudget | None = None,
+    country: str | None = None,
 ) -> DetectionResult:
     """Detect and verify a company's ATS, preferring evidence over guesses."""
     result = DetectionResult(slug=slug)
@@ -338,7 +369,7 @@ async def detect_company(
             continue
         for token in probe_tokens(ats_type, slug, name):
             hint = AtsHint(ats_type=ats_type, board_token=token, origin="probe")
-            status, _detail, count = await verify_hint(hint, slug, name, client, settings)
+            status, _detail, count = await verify_hint(hint, slug, name, client, settings, country)
             if status is CollectionStatus.COLLECTED:
                 return _accept(result, hint, status, None, count)
             if status in BLOCKING_STATUSES:

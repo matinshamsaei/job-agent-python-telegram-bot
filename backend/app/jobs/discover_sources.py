@@ -130,6 +130,7 @@ async def discover(
                 settings,
                 probe_guesses=probe_guesses,
                 budget=budget,
+                country=company.country,
             )
             results.append(result)
             print(
