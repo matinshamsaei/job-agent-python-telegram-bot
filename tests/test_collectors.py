@@ -1,3 +1,5 @@
+import json
+
 import httpx
 import pytest
 
@@ -11,6 +13,7 @@ from app.collectors.detect import (
     extract_hints,
 )
 from app.collectors.greenhouse import GreenhouseCollector
+from app.collectors.lever import LeverCollector
 from app.collectors.personio import PersonioXmlCollector
 from app.collectors.registry import (
     ADAPTERS,
@@ -387,6 +390,92 @@ async def test_workday_collects_postings_and_builds_public_urls() -> None:
     assert jobs[0].url == (
         "https://acme.wd3.myworkdayjobs.com/Acme_Careers/job/Eindhoven/Software-Engineer_JR1"
     )
+
+
+async def test_workday_keeps_paging_when_later_pages_report_zero_total() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        offset = json.loads(request.content)["offset"]
+        postings = [
+            {"title": f"Engineer {offset + i}", "externalPath": f"/job/{offset + i}", "bulletFields": [str(offset + i)]}
+            for i in range(20 if offset < 40 else 5)
+        ]
+        return httpx.Response(200, json={"total": 45 if offset == 0 else 0, "jobPostings": postings})
+
+    jobs = await WorkdayCollector(client_for(handler), settings()).collect(
+        target(AtsType.WORKDAY.value, feed_url="https://acme.wd3.myworkdayjobs.com/Acme_Careers")
+    )
+    assert len(jobs) == 45
+
+
+async def test_lever_falls_back_to_the_eu_api() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.host == "api.lever.co":
+            return httpx.Response(404, json={"ok": False})
+        return httpx.Response(
+            200,
+            json=[
+                {
+                    "id": "abc",
+                    "text": "Senior Frontend Engineer",
+                    "hostedUrl": "https://jobs.eu.lever.co/acme/abc",
+                    "categories": {"location": "Berlin"},
+                    "descriptionPlain": "Intro",
+                    "lists": [{"text": "Requirements", "content": "<li>5+ years of React experience</li>"}],
+                }
+            ],
+        )
+
+    jobs = await LeverCollector(client_for(handler), settings()).collect(
+        target(AtsType.LEVER.value, board_token="acme")
+    )
+    assert [job.title for job in jobs] == ["Senior Frontend Engineer"]
+    assert "5+ years of React experience" in jobs[0].description
+
+
+def test_probed_board_with_no_postings_in_company_country_is_a_collision() -> None:
+    from app.collectors.base import RawJob
+    from app.collectors.detect import board_in_company_country
+
+    def jobs(*locations: str) -> list[RawJob]:
+        return [RawJob(source="lever", external_id=str(i), title="t", url="u", location=loc) for i, loc in enumerate(locations)]
+
+    dun_and_bradstreet = jobs(
+        "Mumbai - India",
+        "Dublin - Ireland",
+        "Austin - Texas - United States",
+        "Warsaw - Poland",
+        "Jacksonville - Florida - United States",
+    )
+    assert not board_in_company_country(dun_and_bradstreet, "NO")
+    assert board_in_company_country(dun_and_bradstreet + jobs("Oslo, Norway"), "NO")
+    assert board_in_company_country(jobs("Shanghai", "Tokyo"), "NO")
+
+
+def test_cloudflare_challenge_is_blocked_not_auth_required() -> None:
+    request = httpx.Request("GET", "https://api.ashbyhq.com/posting-api/job-board/acme")
+    response = httpx.Response(
+        403,
+        request=request,
+        headers={"server": "cloudflare", "cf-ray": "abc"},
+        text="<title>Attention Required! | Cloudflare</title>",
+    )
+    status, detail = classify_http_error(httpx.HTTPStatusError("", request=request, response=response))
+    assert status is CollectionStatus.BLOCKED
+    assert "firewall" in detail
+
+
+async def test_greenhouse_reads_inline_escaped_content() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        assert request.url.params.get("content") == "true"
+        return httpx.Response(
+            200,
+            json={"jobs": [{"id": 1, "title": "Frontend Engineer", "content": "&lt;p&gt;React &amp; TypeScript&lt;/p&gt;"}]},
+        )
+
+    jobs = await GreenhouseCollector(client_for(handler), settings()).collect(
+        target(AtsType.GREENHOUSE.value, board_token="acme")
+    )
+    assert jobs[0].description == "React & TypeScript"
 
 
 # --- detection --------------------------------------------------------------

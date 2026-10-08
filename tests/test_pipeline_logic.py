@@ -228,6 +228,101 @@ def test_target_company_seed_json() -> None:
     )
 
 
+def _job(title: str, external_id: str, location: str | None = "Berlin, Germany"):
+    from app.collectors.base import RawJob
+
+    return RawJob(source="greenhouse", external_id=external_id, title=title, url="u", location=location)
+
+
+def test_fresh_buckets_skip_known_shared_and_repeated_titles() -> None:
+    from types import SimpleNamespace
+
+    from app.jobs.pipeline import fresh_buckets
+
+    careem = SimpleNamespace(id=1, slug="careem")
+    careem_pay = SimpleNamespace(id=2, slug="careem-pay")
+    buckets = [
+        [
+            (careem, None, _job("Senior Frontend Engineer", "1", "Karachi, Pakistan")),
+            (careem, None, _job("Senior Frontend Engineer", "2", "Dubai, UAE")),
+            (careem, None, _job("Senior Software Engineer", "3")),
+            (careem, None, _job("Old Engineer", "4")),
+        ],
+        [(careem_pay, None, _job("Senior Software Engineer", "3"))],
+    ]
+    fresh = fresh_buckets(buckets, {("greenhouse", "4")}, set(), ["AE", "DE"])
+    assert len(fresh) == 1
+    kept = [(item[2].external_id, item[2].title) for item in fresh[0]]
+    assert kept == [("2", "Senior Frontend Engineer"), ("3", "Senior Software Engineer")]
+
+
+def test_non_development_engineer_titles_are_not_targets() -> None:
+    for title in (
+        "Implementation Engineer",
+        "GTM Engineer",
+        "AV Engineer - Platform",
+        "Analytics Engineer, HR Analytics",
+        "Okta Identity Engineer",
+        "Senior Technical Office Engineer",
+        "Director of Software Engineering - Distributed Systems",
+        "C++ Engineer - Experience",
+        "Lead Salesforce Full Stack Engineer",
+        "Binance Accelerator Program - Software Engineer (Full-stack)",
+    ):
+        assert not looks_like_target_role(title), title
+    for title in ("Principal Engineer", "Senior Product Engineer", "Software Engineer, Customer Care", "FullStack Engineer"):
+        assert looks_like_target_role(title), title
+
+
+def test_body_mentions_do_not_set_seniority() -> None:
+    body = "You will lead projects, support our staff and mentor junior engineers."
+    assert infer_seniority("Software Engineer", body) == "unknown"
+    assert infer_seniority("Software Engineer", body, years_required=6) == "senior"
+    assert infer_seniority("Software Engineer II", body) == "mid"
+
+
+def test_years_required_needs_an_experience_phrase() -> None:
+    from app.analyzers.job_analysis import _years_required
+
+    assert _years_required("Founded 20 years ago. 5+ years of professional experience with React.") == 5
+    assert _years_required("We have grown for 12 years.") is None
+    assert _years_required("3-5 years of software engineering experience") == 3
+
+
+def test_one_postings_no_sponsorship_does_not_block_the_company() -> None:
+    from app.analyzers.visa import combine_visa_status
+
+    silent = classify_text("We are hiring a Senior Frontend Engineer in Berlin.")
+    evidence = [
+        ("job_posting", "no_sponsorship", 0.7),
+        ("third_party", "international_hiring", 0.55),
+    ]
+    assert combine_visa_status(silent, evidence) == VisaStatus.LIKELY
+    assert combine_visa_status(silent, [("official", "no_sponsorship", 0.9)]) == VisaStatus.NO
+
+
+def test_locations_outside_target_countries_are_unreachable() -> None:
+    from app.analyzers.filters import location_is_reachable
+
+    targets = ["DE", "IE", "NL"]
+    assert not location_is_reachable(country="DE", location="Seattle, Washington", remote_type="onsite", target_countries=targets)
+    assert not location_is_reachable(country="AE", location="Asia", remote_type="unknown", target_countries=targets)
+    assert not location_is_reachable(country="US", location="Remote, United States", remote_type="remote", target_countries=targets)
+    assert location_is_reachable(country="GB", location="London, England; Dublin, Ireland", remote_type="hybrid", target_countries=targets)
+    assert location_is_reachable(country="NL", location="Remote - EMEA", remote_type="remote", target_countries=targets)
+
+
+def test_other_stacks_count_as_missing_skills() -> None:
+    from app.analyzers.skills import extract_skills, match_skills
+
+    skills = extract_skills("Java and Kotlin services, Node.js and node tooling, REST APIs. The rest of the team.")
+    assert skills.count("Node.js") == 1
+    assert "Java" in skills and "Kotlin" in skills
+    match = match_skills(skills, ["Node.js", "REST", "TypeScript"], "Senior Software Engineer")
+    assert set(match.missing) == {"Java", "Kotlin"}
+    assert match.score < 0.6
+
+
 def test_skip_callback_reads_message_coords() -> None:
     from app.notifications.bot import suggested_message_coords
 
