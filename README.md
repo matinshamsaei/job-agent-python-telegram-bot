@@ -45,7 +45,7 @@ docker compose up -d postgres redis
 cd backend
 uv sync
 uv run alembic upgrade head
-uv run python -m app.jobs run-once --limit 10
+uv run python -m app.jobs run-once --limit 30
 uv run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
@@ -159,14 +159,16 @@ Runs the real pipeline once against PostgreSQL, OpenAI, and Telegram, then exits
 
 ```powershell
 cd f:\Programming\job-agent\backend
-uv run python -m app.jobs run-once --limit 10
+uv run python -m app.jobs run-once --limit 30
 ```
 
 Equivalent:
 
 ```powershell
-uv run python -m app.jobs.run_once --limit 10
+uv run python -m app.jobs.run_once --limit 30
 ```
+
+`--limit` caps the number of **new** jobs scored per run. Postings already stored by earlier runs, and postings from a board shared by several companies, are dropped before the limit is applied, so every run spends its budget on jobs you have not seen.
 
 To handle APPLY / SKIP / REJECT / GENERATE COVER LETTER buttons in production, Telegram calls `POST /telegram/webhook`. Register it once (stop the polling bot first):
 
@@ -213,7 +215,7 @@ Every collection attempt stores a status on its source, so there is always a rea
 | `adapter_missing` | ATS known, no adapter implemented yet |
 | `feed_unavailable` | wrong token, or the feed is down |
 | `auth_required` | feed needs credentials |
-| `blocked` | rate limited |
+| `blocked` | rate limited, or a CDN firewall (Cloudflare) refused this network's IP or region |
 | `invalid_source` | feed responded but could not be parsed |
 | `ats_detected` | ATS found on the careers page but its feed was not readable |
 | `discovered` | not investigated yet |
